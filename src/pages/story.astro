@@ -1,0 +1,345 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import Button from '../components/Button.astro';
+import ContactForm from '../components/ContactForm';
+import site from '../data/site.json';
+
+const hours = [
+  { day: 'Monday', ...site.hours.monday },
+  { day: 'Tuesday', ...site.hours.tuesday },
+  { day: 'Wednesday', ...site.hours.wednesday },
+  { day: 'Thursday', ...site.hours.thursday },
+  { day: 'Friday', ...site.hours.friday },
+  { day: 'Saturday', ...site.hours.saturday },
+  { day: 'Sunday', ...site.hours.sunday },
+];
+
+const formspreeId = import.meta.env.PUBLIC_FORMSPREE_ID || 'demo';
+---
+
+<BaseLayout
+  title="Our Story & Visit | Didi's Cafe & Bakery | Wangsa Maju"
+  description="Didi means elder sister. Meet Nashilla and Noor Shida — the family behind Didi's Cafe & Bakery. European bakes, Malaysian souls, made fresh in Wangsa Maju since February 2025."
+>
+  <!-- Story Hero -->
+  <section class="bg-off-white pt-12 pb-16 md:pt-16 md:pb-24">
+    <div class="max-w-4xl mx-auto px-6 lg:px-8 text-center space-y-6">
+      <p class="eyebrow text-sienna font-medium">The Name</p>
+      <h1 class="font-display text-4xl md:text-5xl lg:text-6xl font-semibold text-espresso leading-tight">
+        Didi means elder sister.
+      </h1>
+      <p class="text-mocha text-lg md:text-xl max-w-2xl mx-auto leading-relaxed">
+        It was Nashilla's family nickname growing up. Now it's the name on the door, and the feeling you get when you walk in.
+      </p>
+    </div>
+  </section>
+
+  <!-- The Beginning -->
+  <section class="bg-cream py-20 md:py-28">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+        <div class="space-y-6">
+          <SectionHeading
+            eyebrow="The Beginning"
+            title="It started with a family that loved coffee."
+          />
+          <div class="space-y-4 text-mocha leading-relaxed">
+            <p>
+              Nashilla Rafiq was a lawyer. A good one. But she was also a mother, a daughter, and part of a family that planned their weekends around which cafes to visit. The coffee was never just about the caffeine — it was about the togetherness.
+            </p>
+            <p>
+              In 2024, she started testing recipes at pop-ups. Rendang on croissant dough. Masak lemak inside ciabatta. People came back. Her mother, Noor Shida, handled the front of house with the warmth of someone who genuinely wanted to know how your day was going.
+            </p>
+            <p>
+              In February 2025, they opened the doors at 69, Jalan Wangsa Delima 5. No investors. No franchise playbook. Just a family that decided their living room should be a little bigger.
+            </p>
+          </div>
+        </div>
+        <div class="h-[50vh] lg:h-[60vh] relative">
+          <img
+            src="https://images.unsplash.com/photo-1517433670267-08bbd4be890f?w=800&h=1000&fit=crop&q=85"
+            alt="Hands shaping croissant dough on a floured wooden surface, warm bakery lighting"
+            class="absolute inset-0 w-full h-full object-cover"
+            loading="lazy"
+            decoding="async"
+            onerror="this.style.display='none'"
+          />
+          <div class="absolute inset-0 bg-cream flex flex-col items-center justify-center gap-3 z-[-1]">
+            <div class="w-12 h-12 rounded-full border-2 border-dashed border-sienna/25 flex items-center justify-center">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#A85D3A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 3c-4.5 0-8 3.5-8 8 0 5.25 8 10 8 10s8-4.75 8-10c0-4.5-3.5-8-8-8z"/>
+                <circle cx="12" cy="11" r="2.5"/>
+              </svg>
+            </div>
+            <span class="font-accent text-sienna text-sm">fresh from the oven soon</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- The Family -->
+  <section class="bg-off-white py-20 md:py-28">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+        <div class="h-[50vh] lg:h-[60vh] relative order-1 lg:order-1">
+          <img
+            src="https://images.unsplash.com/photo-1600093463592-8e36ae95ef56?w=800&h=1000&fit=crop&q=85"
+            alt="Two women laughing together in a warm cafe, mother and daughter"
+            class="absolute inset-0 w-full h-full object-cover"
+            loading="lazy"
+            decoding="async"
+            onerror="this.style.display='none'"
+          />
+          <div class="absolute inset-0 bg-cream flex flex-col items-center justify-center gap-3 z-[-1]">
+            <div class="w-12 h-12 rounded-full border-2 border-dashed border-sienna/25 flex items-center justify-center">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#A85D3A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 3c-4.5 0-8 3.5-8 8 0 5.25 8 10 8 10s8-4.75 8-10c0-4.5-3.5-8-8-8z"/>
+                <circle cx="12" cy="11" r="2.5"/>
+              </svg>
+            </div>
+            <span class="font-accent text-sienna text-sm">fresh from the oven soon</span>
+          </div>
+        </div>
+        <div class="space-y-6 order-2 lg:order-2">
+          <SectionHeading
+            eyebrow="The Family"
+            title="Nashilla & Noor Shida"
+          />
+          <div class="space-y-4 text-mocha leading-relaxed">
+            <p>
+              Nashilla runs the kitchen partnerships and the business. Her mother runs the room. Noor Shida has a way of making first-timers feel like regulars and regulars feel like family. She remembers names. She remembers orders. She asks follow-up questions.
+            </p>
+            <p>
+              One Mother's Day, two young girls came in with their mother. Noor Shida spent twenty minutes talking to them about school, about dreams, about the pastry they should try next. When they left, the mother turned around and said, "You made their day." Noor Shida cried. So did Nashilla.
+            </p>
+          </div>
+          <blockquote class="border-l-2 border-sienna pl-5 py-1">
+            <p class="font-display text-xl italic text-espresso">
+              "People come in for the pastries, but they stay because someone here cares about the pieces of their lives they choose to share."
+            </p>
+            <footer class="text-sm text-mocha mt-2">— Noor Shida Ismail</footer>
+          </blockquote>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- The Bakery -->
+  <section class="bg-cream py-20 md:py-28">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+        <div class="space-y-6">
+          <SectionHeading
+            eyebrow="The Bakery"
+            title="No shortcuts. No yesterday's dough."
+          />
+          <div class="space-y-4 text-mocha leading-relaxed">
+            <p>
+              Didi's has an in-house pastry chef who starts before sunrise. Every croissant is laminated by hand. Every ciabatta is shaped individually. The rendang is slow-cooked in small batches. The masak lemak is made from a family recipe.
+            </p>
+            <p>
+              We don't freeze. We don't reheat. We don't buy pre-made fillings and call it artisan. If you arrive at 9:05am, you'll smell the butter before you see the counter.
+            </p>
+          </div>
+        </div>
+        <div class="grid grid-cols-2 gap-4 h-[50vh] lg:h-auto">
+          <div class="relative w-full h-full">
+            <img
+              src="https://images.unsplash.com/photo-1586444248902-2f64eddc13df?w=400&h=500&fit=crop&q=80"
+              alt="Freshly baked croissants cooling on a wire rack"
+              class="absolute inset-0 w-full h-full object-cover"
+              loading="lazy"
+              decoding="async"
+              onerror="this.style.display='none'"
+            />
+            <div class="absolute inset-0 bg-cream flex flex-col items-center justify-center gap-2 z-[-1]">
+              <div class="w-8 h-8 rounded-full border-2 border-dashed border-sienna/25 flex items-center justify-center">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#A85D3A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 3c-4.5 0-8 3.5-8 8 0 5.25 8 10 8 10s8-4.75 8-10c0-4.5-3.5-8-8-8z"/>
+                  <circle cx="12" cy="11" r="2.5"/>
+                </svg>
+              </div>
+              <span class="font-accent text-sienna text-xs">fresh from the oven soon</span>
+            </div>
+          </div>
+          <div class="relative w-full h-full">
+            <img
+              src="https://images.unsplash.com/photo-1556910103-1c02745aae4d?w=400&h=500&fit=crop&q=80"
+              alt="Pastry chef decorating a cake with precision"
+              class="absolute inset-0 w-full h-full object-cover"
+              loading="lazy"
+              decoding="async"
+              onerror="this.style.display='none'"
+            />
+            <div class="absolute inset-0 bg-cream flex flex-col items-center justify-center gap-2 z-[-1]">
+              <div class="w-8 h-8 rounded-full border-2 border-dashed border-sienna/25 flex items-center justify-center">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#A85D3A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 3c-4.5 0-8 3.5-8 8 0 5.25 8 10 8 10s8-4.75 8-10c0-4.5-3.5-8-8-8z"/>
+                  <circle cx="12" cy="11" r="2.5"/>
+                </svg>
+              </div>
+              <span class="font-accent text-sienna text-xs">fresh from the oven soon</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- The Space -->
+  <section class="bg-off-white">
+    <div class="h-[60vh] lg:h-[70vh] relative">
+      <img
+        src="https://images.unsplash.com/photo-1521017432531-fbd92d768814?w=1600&h=900&fit=crop&q=85"
+        alt="Warm cafe interior with soft lighting, wooden tables, and characterful decor"
+        class="absolute inset-0 w-full h-full object-cover"
+        loading="lazy"
+        decoding="async"
+        onerror="this.style.display='none'"
+      />
+      <div class="absolute inset-0 bg-cream flex flex-col items-center justify-center gap-3 z-[-2]">
+        <div class="w-14 h-14 rounded-full border-2 border-dashed border-sienna/25 flex items-center justify-center">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#A85D3A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 3c-4.5 0-8 3.5-8 8 0 5.25 8 10 8 10s8-4.75 8-10c0-4.5-3.5-8-8-8z"/>
+            <circle cx="12" cy="11" r="2.5"/>
+          </svg>
+        </div>
+        <span class="font-accent text-sienna text-base">fresh from the oven soon</span>
+      </div>
+      <div class="absolute inset-0 bg-espresso-dark/30 z-[-1]"></div>
+      <div class="absolute inset-0 flex items-center justify-center">
+        <div class="text-center text-cream px-6">
+          <p class="font-display text-2xl md:text-3xl lg:text-4xl italic">
+            Calm. Warm-lit. Conversation-level music.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Visit -->
+  <section id="visit" class="bg-cream py-20 md:py-28">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
+        <!-- Info -->
+        <div class="space-y-8">
+          <div class="space-y-2">
+            <p class="eyebrow text-sienna font-medium">Visit</p>
+            <h2 class="font-display text-3xl md:text-4xl font-semibold text-espresso">Find us in Wangsa Maju.</h2>
+          </div>
+
+          <div class="space-y-4">
+            <address class="not-italic text-mocha leading-relaxed space-y-1">
+              <p class="font-medium text-espresso">{site.name}</p>
+              <p>{site.address.street}</p>
+              <p>{site.address.area}, {site.address.postcode} {site.address.city}</p>
+            </address>
+            <p class="text-mocha">
+              <a href={`tel:${site.phone.replace(/\s/g, '')}`} class="hover:text-sienna transition-colors">
+                {site.phone}
+              </a>
+            </p>
+          </div>
+
+          <!-- Hours table -->
+          <div class="space-y-3">
+            <h3 class="text-sm font-medium text-espresso">Opening Hours</h3>
+            <div class="border border-espresso/10 divide-y divide-espresso/5">
+              {hours.map((h) => (
+                <div class={`flex justify-between px-4 py-3 text-sm ${h.closed ? 'bg-sienna/5' : ''}`}>
+                  <span class={h.closed ? 'text-sienna font-medium' : 'text-mocha'}>
+                    {h.day}
+                  </span>
+                  <span class={h.closed ? 'text-sienna font-medium' : 'text-espresso'}>
+                    {h.closed ? 'Closed' : `${h.open} – ${h.close}`}
+                  </span>
+                </div>
+              ))}
+            </div>
+            <p class="text-xs text-sienna">
+              Closed Mondays — that's when we rest, plan, and prep the week's bakes.
+            </p>
+          </div>
+
+          <div class="flex flex-wrap gap-4">
+            <Button href={site.googleMapsUrl} variant="outline" size="md" target="_blank" rel="noopener">
+              Open in Google Maps
+            </Button>
+            <Button href={`https://wa.me/${site.whatsapp}`} variant="filled" size="md" target="_blank" rel="noopener">
+              WhatsApp Us
+            </Button>
+          </div>
+
+          <p class="text-xs text-mocha/70">
+            Parking: Street parking available along Jalan Wangsa Delima 5. Arrive early on weekends.
+          </p>
+        </div>
+
+        <!-- Map + Form -->
+        <div class="space-y-10">
+          <div class="h-[40vh] lg:h-[50vh]">
+            <iframe
+              src={site.mapsEmbed}
+              title="Didi's Cafe location map"
+              class="w-full h-full border-0"
+              loading="lazy"
+              allowfullscreen
+              referrerpolicy="no-referrer-when-downgrade"
+            ></iframe>
+          </div>
+
+          <div class="space-y-4">
+            <h3 class="font-display text-xl font-semibold text-espresso">Send us a message</h3>
+            <ContactForm client:load formspreeId={formspreeId} />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Social block -->
+  <section class="bg-off-white py-16 md:py-20">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+        <a
+          href={site.social.instagram}
+          target="_blank"
+          rel="noopener"
+          class="group bg-cream p-8 text-center space-y-3 hover:shadow-lg transition-shadow duration-300"
+        >
+          <p class="eyebrow text-sienna font-medium">Follow</p>
+          <h3 class="font-display text-2xl font-semibold text-espresso group-hover:text-sienna transition-colors">
+            @didisonaroll
+          </h3>
+          <p class="text-sm text-mocha">Daily bakes, behind-the-scenes, and the occasional flour fight.</p>
+        </a>
+        <a
+          href={site.social.tiktok}
+          target="_blank"
+          rel="noopener"
+          class="group bg-cream p-8 text-center space-y-3 hover:shadow-lg transition-shadow duration-300"
+        >
+          <p class="eyebrow text-sienna font-medium">Watch</p>
+          <h3 class="font-display text-2xl font-semibold text-espresso group-hover:text-sienna transition-colors">
+            TikTok
+          </h3>
+          <p class="text-sm text-mocha">Laminations, latte art, and the sounds of a working bakery.</p>
+        </a>
+        <a
+          href={site.social.foodpanda}
+          target="_blank"
+          rel="noopener"
+          class="group bg-cream p-8 text-center space-y-3 hover:shadow-lg transition-shadow duration-300"
+        >
+          <p class="eyebrow text-sienna font-medium">Order</p>
+          <h3 class="font-display text-2xl font-semibold text-espresso group-hover:text-sienna transition-colors">
+            FoodPanda
+          </h3>
+          <p class="text-sm text-mocha">Delivery within Wangsa Maju and surrounding areas.</p>
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

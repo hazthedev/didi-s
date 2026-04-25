@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://didiscafe.com/sitemap-index.xml

@@ -1,0 +1,65 @@
+---
+import site from '../data/site.json';
+import Button from '../components/Button.astro';
+
+const todayName = new Date().toLocaleDateString('en-MY', { weekday: 'long' }).toLowerCase();
+const todayHours = site.hours[todayName as keyof typeof site.hours];
+const isClosed = todayHours?.closed ?? false;
+
+function formatHours(hours: typeof todayHours) {
+  if (!hours || hours.closed) return 'Closed';
+  return `${hours.open} – ${hours.close}`;
+}
+---
+
+<section class="bg-off-white py-20 md:py-28">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+      <!-- Map preview -->
+      <div class="h-[40vh] lg:h-[50vh] bg-mocha/10 relative overflow-hidden">
+        <iframe
+          src={site.mapsEmbed}
+          title="Didi's Cafe location map"
+          class="w-full h-full border-0 grayscale hover:grayscale-0 transition-all duration-500"
+          loading="lazy"
+          allowfullscreen
+          referrerpolicy="no-referrer-when-downgrade"
+        ></iframe>
+      </div>
+
+      <!-- Info -->
+      <div class="space-y-8">
+        <div class="space-y-2">
+          <p class="eyebrow text-sienna font-medium">Visit Us</p>
+          <h2 class="font-display text-3xl md:text-4xl font-semibold text-espresso">See you soon.</h2>
+        </div>
+
+        <div class="space-y-4">
+          <div class="flex items-center justify-between py-3 border-b border-espresso/10">
+            <span class="text-sm text-mocha">Today ({todayName})</span>
+            <span class={`text-sm font-medium ${isClosed ? 'text-sienna' : 'text-espresso'}`}>
+              {formatHours(todayHours)}
+            </span>
+          </div>
+          <p class="text-xs text-mocha/70">
+            Closed Mondays — that's when we rest, plan, and prep the week's bakes.
+          </p>
+        </div>
+
+        <address class="not-italic text-mocha text-sm leading-relaxed space-y-1">
+          <p>{site.address.street}</p>
+          <p>{site.address.area}, {site.address.postcode} {site.address.city}</p>
+        </address>
+
+        <div class="flex flex-wrap gap-4">
+          <Button href="/story#visit" variant="filled" size="md">
+            Plan Your Visit
+          </Button>
+          <Button href={`https://wa.me/${site.whatsapp}`} variant="outline" size="md" target="_blank" rel="noopener">
+            WhatsApp Us
+          </Button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

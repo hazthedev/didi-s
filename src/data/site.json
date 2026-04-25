@@ -1,0 +1,47 @@
+{
+  "name": "Didi's Cafe & Bakery",
+  "tagline": "Pastries with a passport.",
+  "subtagline": "European bakes, Malaysian souls. Made fresh every morning by family — the way it should be.",
+  "description": "Family-run bakery in Wangsa Maju. European pastries with Malaysian flavors — rendang croizza, masak lemak ciabatta, ondeh-ondeh croissants. Specialty coffee & matcha. Halal. Closed Mondays.",
+  "address": {
+    "street": "69, Jalan Wangsa Delima 5",
+    "area": "Pusat Bandar Wangsa Maju",
+    "city": "Kuala Lumpur",
+    "postcode": "53300",
+    "country": "Malaysia",
+    "full": "69, Jalan Wangsa Delima 5, Pusat Bandar Wangsa Maju, 53300 Kuala Lumpur"
+  },
+  "phone": "017-610 2521",
+  "whatsapp": "60176102521",
+  "hours": {
+    "monday": { "open": null, "close": null, "closed": true },
+    "tuesday": { "open": "09:00", "close": "00:00", "closed": false },
+    "wednesday": { "open": "09:00", "close": "00:00", "closed": false },
+    "thursday": { "open": "09:00", "close": "00:00", "closed": false },
+    "friday": { "open": "09:00", "close": "01:00", "closed": false },
+    "saturday": { "open": "09:00", "close": "01:00", "closed": false },
+    "sunday": { "open": "09:00", "close": "01:00", "closed": false }
+  },
+  "social": {
+    "instagram": "https://instagram.com/didisonaroll",
+    "tiktok": "https://tiktok.com/@didisonaroll",
+    "foodpanda": "https://www.foodpanda.my"
+  },
+  "mapsEmbed": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3983.6!2d101.73!3d3.2!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNcKwMTInMDAuMCJOIDEwMcKwNDMnNDguMCJF!5e0!3m2!1sen!2smy!4v1700000000000!5m2!1sen!2smy",
+  "googleMapsUrl": "https://maps.google.com/?q=69+Jalan+Wangsa+Delima+5+Wangsa+Maju+53300+Kuala+Lumpur",
+  "rating": {
+    "score": 4.8,
+    "reviews": 200
+  },
+  "priceRange": "$$",
+  "cuisine": ["Bakery", "European", "Malaysian Fusion"],
+  "founder": {
+    "name": "Nashilla Rafiq",
+    "title": "founder · former lawyer, mum"
+  },
+  "mother": {
+    "name": "Noor Shida Ismail",
+    "title": "co-founder · the heart of the front room"
+  },
+  "openingDate": "2025-02-01"
+}

@@ -1,0 +1,179 @@
+{
+  "categories": [
+    { "id": "croissants", "name": "Croissants & Croizzas" },
+    { "id": "ciabattas", "name": "Ciabattas" },
+    { "id": "focaccias", "name": "Focaccias" },
+    { "id": "sweet-pastries", "name": "Sweet Pastries" },
+    { "id": "cakes", "name": "Cakes" },
+    { "id": "coffee", "name": "Coffee" },
+    { "id": "matcha", "name": "Matcha" },
+    { "id": "specialties", "name": "Specialties" }
+  ],
+  "items": [
+    {
+      "id": "rendang-croizza",
+      "name": "Rendang Croizza",
+      "description": "A flaky croissant, dressed like a pizza, topped with slow-cooked beef rendang. Familiar flavor, unfamiliar shape.",
+      "price": 24,
+      "category": "croissants",
+      "image": "/images/bakes/rendang-croizza.jpg",
+      "tags": ["halal", "signature"],
+      "featured": true,
+      "bentoSize": "large"
+    },
+    {
+      "id": "pistachio-croissant",
+      "name": "Pistachio Croissant",
+      "description": "Buttery layers filled with pistachio cream and finished with crushed nuts. Nutty, fragrant, gently sweet.",
+      "price": 18,
+      "category": "croissants",
+      "image": "/images/bakes/pistachio-croissant.jpg",
+      "tags": ["halal", "signature", "vegetarian"],
+      "featured": true,
+      "bentoSize": "large"
+    },
+    {
+      "id": "masak-lemak-ciabatta",
+      "name": "Masak Lemak Ciabatta",
+      "description": "Crusty Italian bread, stuffed with bright yellow masak lemak chicken. Spicy, creamy, tangy, never oily.",
+      "price": 22,
+      "category": "ciabattas",
+      "image": "/images/bakes/masak-lemak-ciabatta.jpg",
+      "tags": ["halal", "signature"],
+      "featured": true,
+      "bentoSize": "wide"
+    },
+    {
+      "id": "garlic-confit-focaccia",
+      "name": "Garlic Confit Focaccia",
+      "description": "Olive oil-poached garlic, rosemary, and flaky sea salt on a pillowy slab. Tear and share, or don't.",
+      "price": 20,
+      "category": "focaccias",
+      "image": "/images/bakes/garlic-confit-focaccia.jpg",
+      "tags": ["halal", "signature", "vegetarian"],
+      "featured": true,
+      "bentoSize": "wide"
+    },
+    {
+      "id": "burnt-cheesecake",
+      "name": "Burnt Cheesecake Slice",
+      "description": "Basque-style, wobbly centre, caramelised top. Served with a dusting of sea salt.",
+      "price": 20,
+      "category": "cakes",
+      "image": "/images/bakes/burnt-cheesecake.jpg",
+      "tags": ["halal", "vegetarian"],
+      "featured": false,
+      "bentoSize": "wide"
+    },
+    {
+      "id": "gula-apong-latte",
+      "name": "Gula Apong Latte",
+      "description": "Espresso swirled with Sarawakian palm sugar and steamed milk. Smoky, caramel, unmistakably Malaysian.",
+      "price": 16,
+      "category": "coffee",
+      "image": "/images/bakes/gula-apong-latte.jpg",
+      "tags": ["halal", "signature"],
+      "featured": false,
+      "bentoSize": "tall"
+    },
+    {
+      "id": "matcha-strawberry-latte",
+      "name": "Matcha Strawberry Latte",
+      "description": "Ceremonial-grade matcha layered with strawberry puree and creamy oat milk. Instagram-worthy, genuinely delicious.",
+      "price": 18,
+      "category": "matcha",
+      "image": "/images/bakes/matcha-strawberry-latte.jpg",
+      "tags": ["halal", "signature", "vegetarian"],
+      "featured": false,
+      "bentoSize": "tall"
+    },
+    {
+      "id": "coconut-matcha",
+      "name": "Coconut Matcha",
+      "description": "Shaded matcha whisked with coconut cream and a whisper of pandan. Tropical, grounding, green.",
+      "price": 18,
+      "category": "matcha",
+      "image": "/images/bakes/coconut-matcha.jpg",
+      "tags": ["halal", "vegetarian"],
+      "featured": false,
+      "bentoSize": "tall"
+    },
+    {
+      "id": "classic-croissant",
+      "name": "Classic Butter Croissant",
+      "description": "27 laminations, French butter, baked until the edges crackle. The standard by which we measure the day.",
+      "price": 14,
+      "category": "croissants",
+      "image": "/images/bakes/classic-croissant.jpg",
+      "tags": ["halal", "vegetarian"],
+      "featured": false,
+      "bentoSize": "tall"
+    },
+    {
+      "id": "coffee-cream-croissant",
+      "name": "Coffee Cream Croissant",
+      "description": "Espresso-infused pastry cream, cherry jam centre, Biscoff crumb finish. For the indecisive sweet tooth.",
+      "price": 19,
+      "category": "croissants",
+      "image": "/images/bakes/coffee-cream-croissant.jpg",
+      "tags": ["halal", "new", "vegetarian"],
+      "featured": false,
+      "bentoSize": "small"
+    },
+    {
+      "id": "ondeh-ondeh-pastry",
+      "name": "Ondeh-Ondeh Pastry",
+      "description": "Flaky puff pastry pockets filled with gula melaka and desiccated coconut. A Malaysian classic, reimagined.",
+      "price": 16,
+      "category": "sweet-pastries",
+      "image": "/images/bakes/ondeh-ondeh-pastry.jpg",
+      "tags": ["halal", "signature", "vegetarian"],
+      "featured": true,
+      "bentoSize": "small"
+    },
+    {
+      "id": "butterscotch-latte",
+      "name": "Butterscotch Latte",
+      "description": "House-made butterscotch, double ristretto, velvet foam. Like a hug in a ceramic cup.",
+      "price": 17,
+      "category": "coffee",
+      "image": "/images/bakes/butterscotch-latte.jpg",
+      "tags": ["halal", "new"],
+      "featured": false,
+      "bentoSize": "small"
+    },
+    {
+      "id": "dendeng-ciabatta",
+      "name": "Dendeng Ciabatta",
+      "description": "Spicy-sweet beef dendeng tucked into a crusty ciabatta with pickled onions. Bold, unapologetic, addictive.",
+      "price": 23,
+      "category": "ciabattas",
+      "image": "/images/bakes/dendeng-ciabatta.jpg",
+      "tags": ["halal", "new"],
+      "featured": false,
+      "bentoSize": "small"
+    },
+    {
+      "id": "ayam-balado-focaccia",
+      "name": "Ayam Balado Focaccia",
+      "description": "Minang-style spicy chicken on rosemary focaccia. Heat, herbs, and heritage in every bite.",
+      "price": 21,
+      "category": "focaccias",
+      "image": "/images/bakes/ayam-balado-focaccia.jpg",
+      "tags": ["halal"],
+      "featured": false,
+      "bentoSize": "small"
+    },
+    {
+      "id": "pandan-gula-melaka-cake",
+      "name": "Pandan Gula Melaka Cake",
+      "description": "Chiffon layers, gula melaka caramel, toasted coconut. The cake your grandmother wishes she invented.",
+      "price": 22,
+      "category": "cakes",
+      "image": "/images/bakes/pandan-gula-melaka-cake.jpg",
+      "tags": ["halal", "signature", "vegetarian"],
+      "featured": false,
+      "bentoSize": "small"
+    }
+  ]
+}

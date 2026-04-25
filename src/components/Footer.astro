@@ -1,0 +1,98 @@
+---
+import site from '../data/site.json';
+
+const currentYear = new Date().getFullYear();
+
+const hours = [
+  { day: 'Mon', label: 'Monday', ...site.hours.monday },
+  { day: 'Tue', label: 'Tuesday', ...site.hours.tuesday },
+  { day: 'Wed', label: 'Wednesday', ...site.hours.wednesday },
+  { day: 'Thu', label: 'Thursday', ...site.hours.thursday },
+  { day: 'Fri', label: 'Friday', ...site.hours.friday },
+  { day: 'Sat', label: 'Saturday', ...site.hours.saturday },
+  { day: 'Sun', label: 'Sunday', ...site.hours.sunday },
+];
+---
+
+<footer class="bg-espresso-dark text-cream">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8 py-16 lg:py-20">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-16">
+      <!-- Brand -->
+      <div class="space-y-4">
+        <a href="/" class="font-display text-3xl font-semibold text-cream">Didi's</a>
+        <p class="text-mocha text-sm leading-relaxed max-w-xs">
+          European bakes, Malaysian souls. Made fresh every morning by family in Wangsa Maju.
+        </p>
+        <p class="text-xs text-mocha/70">
+          Halal · Closed Mondays
+        </p>
+      </div>
+
+      <!-- Hours -->
+      <div class="space-y-4">
+        <h3 class="eyebrow text-cream/60">Hours</h3>
+        <ul class="space-y-2 text-sm">
+          {hours.map((h) => (
+            <li class="flex justify-between gap-4">
+              <span class={h.closed ? 'text-sienna font-medium' : 'text-cream/80'}>
+                {h.day}
+              </span>
+              <span class={h.closed ? 'text-sienna font-medium' : 'text-cream/60'}>
+                {h.closed ? 'Closed' : `${h.open} – ${h.close}`}
+              </span>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Contact -->
+      <div class="space-y-4">
+        <h3 class="eyebrow text-cream/60">Find Us</h3>
+        <address class="not-italic text-sm text-cream/80 leading-relaxed space-y-1">
+          <p>{site.address.street}</p>
+          <p>{site.address.area}, {site.address.postcode} {site.address.city}</p>
+        </address>
+        <p class="text-sm text-cream/80">
+          <a href={`tel:${site.phone.replace(/\s/g, '')}`} class="hover:text-sienna transition-colors">
+            {site.phone}
+          </a>
+        </p>
+        <div class="flex items-center gap-4 pt-2">
+          <a
+            href={site.social.instagram}
+            target="_blank"
+            rel="noopener"
+            class="text-sm text-cream/60 hover:text-sienna transition-colors"
+          >
+            Instagram
+          </a>
+          <a
+            href={site.social.tiktok}
+            target="_blank"
+            rel="noopener"
+            class="text-sm text-cream/60 hover:text-sienna transition-colors"
+          >
+            TikTok
+          </a>
+          <a
+            href={site.social.foodpanda}
+            target="_blank"
+            rel="noopener"
+            class="text-sm text-cream/60 hover:text-sienna transition-colors"
+          >
+            FoodPanda
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-16 pt-8 border-t border-cream/10 flex flex-col md:flex-row items-center justify-between gap-4">
+      <p class="text-xs text-mocha/60">
+        &copy; {currentYear} Didi's Cafe & Bakery. Made with love (and butter) in Wangsa Maju.
+      </p>
+      <p class="text-xs text-mocha/40">
+        All photos are property of Didi's Cafe & Bakery.
+      </p>
+    </div>
+  </div>
+</footer>

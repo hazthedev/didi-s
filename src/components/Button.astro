@@ -1,0 +1,47 @@
+---
+export interface Props {
+  href?: string;
+  variant?: 'filled' | 'outline' | 'text';
+  size?: 'sm' | 'md' | 'lg';
+  type?: 'button' | 'submit';
+  target?: string;
+  rel?: string;
+  class?: string;
+}
+
+const {
+  href,
+  variant = 'filled',
+  size = 'md',
+  type = 'button',
+  target,
+  rel,
+  class: className = '',
+} = Astro.props;
+
+const baseStyles = 'inline-flex items-center justify-center font-medium transition-all duration-300 ease-in-out rounded-none';
+
+const variantStyles = {
+  filled: 'bg-sienna text-cream hover:bg-espresso border border-sienna hover:border-espresso',
+  outline: 'bg-transparent text-sienna border border-sienna hover:bg-sienna hover:text-cream',
+  text: 'bg-transparent text-sienna hover:text-espresso underline-offset-4 hover:underline',
+};
+
+const sizeStyles = {
+  sm: 'px-4 py-2 text-sm',
+  md: 'px-6 py-3 text-sm',
+  lg: 'px-8 py-4 text-base',
+};
+
+const classes = `${baseStyles} ${variantStyles[variant]} ${sizeStyles[size]} ${className}`;
+---
+
+{href ? (
+  <a href={href} target={target} rel={rel} class={classes}>
+    <slot />
+  </a>
+) : (
+  <button type={type} class={classes}>
+    <slot />
+  </button>
+)}

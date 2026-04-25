@@ -1,0 +1,78 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import Button from '../components/Button.astro';
+import BakesPageClient from '../components/BakesPageClient';
+import bakes from '../data/bakes.json';
+import site from '../data/site.json';
+---
+
+<BaseLayout
+  title="What's Baking | Didi's Cafe & Bakery | Wangsa Maju"
+  description="Our full selection of European-Malaysian bakes. Rendang croizza, masak lemak ciabatta, pistachio croissants, specialty coffee & matcha. Fresh every morning."
+>
+  <!-- Hero -->
+  <section class="bg-off-white pt-12 pb-8 md:pt-16 md:pb-12">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8 text-center">
+      <SectionHeading
+        eyebrow="The Kitchen"
+        title="Today, We're Baking"
+        subtitle="Everything baked fresh on-site, every morning."
+        align="center"
+      />
+    </div>
+  </section>
+
+  <!-- Tabs + Grid -->
+  <section class="bg-off-white pb-16 md:pb-24">
+    <BakesPageClient client:load categories={bakes.categories} items={bakes.items} />
+  </section>
+
+  <!-- Reserve callout -->
+  <section class="bg-cream py-16 md:py-20">
+    <div class="max-w-3xl mx-auto px-6 lg:px-8 text-center space-y-6">
+      <p class="eyebrow text-sienna font-medium">Advance Orders</p>
+      <h2 class="font-display text-2xl md:text-3xl font-semibold text-espresso">
+        Reserve a bake for tomorrow.
+      </h2>
+      <p class="text-mocha leading-relaxed max-w-lg mx-auto">
+        Whole croissants, whole cakes, or a box of your favourites — we set them aside so you don't miss out.
+      </p>
+      <Button
+        href={`https://wa.me/${site.whatsapp}?text=Hi%20Didi's,%20I'd%20like%20to%20reserve...`}
+        variant="filled"
+        size="md"
+        target="_blank"
+        rel="noopener"
+      >
+        Reserve via WhatsApp
+      </Button>
+    </div>
+  </section>
+
+  <!-- Order block -->
+  <section class="bg-off-white py-16 md:py-20">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+        <Button
+          href={`https://wa.me/${site.whatsapp}?text=Hi%20Didi's,%20I'd%20like%20to%20place%20an%20order...`}
+          variant="outline"
+          size="md"
+          target="_blank"
+          rel="noopener"
+        >
+          Order via WhatsApp
+        </Button>
+        <Button
+          href={site.social.foodpanda}
+          variant="outline"
+          size="md"
+          target="_blank"
+          rel="noopener"
+        >
+          Order on FoodPanda
+        </Button>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

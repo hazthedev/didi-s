@@ -1,0 +1,17 @@
+---
+export interface Props {
+  class?: string;
+}
+
+const { class: className = '' } = Astro.props;
+---
+
+<div class={`bg-cream flex flex-col items-center justify-center gap-3 ${className}`}>
+  <div class="w-12 h-12 rounded-full border-2 border-dashed border-sienna/25 flex items-center justify-center">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#A85D3A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M12 3c-4.5 0-8 3.5-8 8 0 5.25 8 10 8 10s8-4.75 8-10c0-4.5-3.5-8-8-8z"/>
+      <circle cx="12" cy="11" r="2.5"/>
+    </svg>
+  </div>
+  <span class="font-accent text-sienna text-sm">fresh from the oven soon</span>
+</div>

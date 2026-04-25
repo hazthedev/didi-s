@@ -1,0 +1,23 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Button from '../components/Button.astro';
+---
+
+<BaseLayout title="Page Not Found | Didi's Cafe & Bakery">
+  <section class="bg-off-white min-h-[70vh] flex items-center justify-center">
+    <div class="text-center px-6 space-y-6">
+      <p class="font-display text-8xl md:text-9xl font-semibold text-sienna/20">404</p>
+      <h1 class="font-display text-3xl md:text-4xl font-semibold text-espresso">
+        This page is still rising.
+      </h1>
+      <p class="text-mocha max-w-md mx-auto">
+        We couldn't find what you're looking for. But the croissants are definitely ready.
+      </p>
+      <div class="pt-4">
+        <Button href="/" variant="filled" size="md">
+          Back to Home
+        </Button>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

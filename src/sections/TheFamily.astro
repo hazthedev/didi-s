@@ -1,0 +1,45 @@
+---
+import SectionHeading from '../components/SectionHeading.astro';
+---
+
+<section class="bg-off-white py-20 md:py-28">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+      <!-- Photo -->
+      <div class="h-[50vh] lg:h-[65vh] relative">
+        <img
+          src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=800&h=1000&fit=crop&q=85"
+          alt="Warm cafe interior with natural wood tables, soft lighting, and characterful decor"
+          class="absolute inset-0 w-full h-full object-cover"
+          loading="lazy"
+          decoding="async"
+          onerror="this.style.display='none'"
+        />
+        <div class="absolute inset-0 bg-cream flex flex-col items-center justify-center gap-3 z-[-1]">
+          <div class="w-12 h-12 rounded-full border-2 border-dashed border-sienna/25 flex items-center justify-center">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#A85D3A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 3c-4.5 0-8 3.5-8 8 0 5.25 8 10 8 10s8-4.75 8-10c0-4.5-3.5-8-8-8z"/>
+              <circle cx="12" cy="11" r="2.5"/>
+            </svg>
+          </div>
+          <span class="font-accent text-sienna text-sm">fresh from the oven soon</span>
+        </div>
+      </div>
+
+      <!-- Text -->
+      <div class="space-y-6">
+        <SectionHeading
+          title="Run by the people who eat here too."
+        />
+        <div class="space-y-4 text-mocha leading-relaxed">
+          <p>
+            Didi's is Nashilla, her mom Noor Shida, and a small team of bakers who treat every loaf like it's going to their own table. You'll often find Noor Shida at the front, coffee in hand, asking how your day's been. <span class="text-pistachio font-medium">She means it.</span>
+          </p>
+          <p>
+            Nashilla left law to build something her family could gather around. The name "Didi" — elder sister in Hindi — was her childhood nickname. Now it's the name on the door, and the feeling inside.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

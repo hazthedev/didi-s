@@ -1,0 +1,20 @@
+---
+export interface Props {
+  quote: string;
+  attribution?: string;
+  class?: string;
+}
+
+const { quote, attribution, class: className = '' } = Astro.props;
+---
+
+<blockquote class={`space-y-4 ${className}`}>
+  <p class="font-display text-2xl md:text-3xl lg:text-4xl font-normal italic text-espresso leading-snug">
+    "{quote}"
+  </p>
+  {attribution && (
+    <footer class="text-mocha text-sm md:text-base">
+      — {attribution}
+    </footer>
+  )}
+</blockquote>

@@ -1,0 +1,139 @@
+---
+import site from '../data/site.json';
+
+const today = new Date().toLocaleDateString('en-MY', { weekday: 'long' }).toLowerCase();
+const isClosedToday = site.hours[today as keyof typeof site.hours]?.closed ?? false;
+
+const navLinks = [
+  { href: '/', label: 'Home' },
+  { href: '/bakes', label: 'Bakes' },
+  { href: '/story', label: 'Story' },
+  { href: '/story#visit', label: 'Visit' },
+];
+---
+
+<header
+  id="navbar"
+  class="fixed top-0 left-0 right-0 z-50 transition-all duration-200 bg-cream/90 border-b border-transparent"
+>
+  <div class="max-w-7xl mx-auto px-6 lg:px-8">
+    <div class="flex items-center justify-between h-16 lg:h-20">
+      <!-- Wordmark -->
+      <a href="/" class="font-display text-2xl lg:text-3xl font-semibold text-espresso tracking-tight">
+        Didi's
+      </a>
+
+      <!-- Desktop nav -->
+      <nav class="hidden md:flex items-center gap-8">
+        {navLinks.map((link) => (
+          <a
+            href={link.href}
+            class="text-sm font-medium text-mocha hover:text-sienna transition-colors duration-200"
+          >
+            {link.label}
+          </a>
+        ))}
+        <a
+          href={`https://wa.me/${site.whatsapp}`}
+          target="_blank"
+          rel="noopener"
+          class="text-sm font-medium text-sienna hover:text-espresso transition-colors duration-200"
+        >
+          WhatsApp
+        </a>
+      </nav>
+
+      <!-- Mobile menu button -->
+      <button
+        id="mobile-menu-btn"
+        aria-label="Open menu"
+        aria-expanded="false"
+        aria-controls="mobile-menu"
+        class="md:hidden p-2 text-espresso"
+      >
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <line x1="3" y1="6" x2="21" y2="6" class="menu-line-top" />
+          <line x1="3" y1="12" x2="21" y2="12" class="menu-line-mid" />
+          <line x1="3" y1="18" x2="21" y2="18" class="menu-line-btm" />
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile drawer -->
+  <div
+    id="mobile-menu"
+    class="md:hidden fixed inset-0 top-16 bg-cream/98 backdrop-blur-sm transform translate-x-full transition-transform duration-300 ease-in-out"
+    aria-hidden="true"
+  >
+    <nav class="flex flex-col items-center justify-center h-full gap-8">
+      {navLinks.map((link) => (
+        <a
+          href={link.href}
+          class="font-display text-2xl text-espresso hover:text-sienna transition-colors"
+        >
+          {link.label}
+        </a>
+      ))}
+      <a
+        href={`https://wa.me/${site.whatsapp}`}
+        target="_blank"
+        rel="noopener"
+        class="text-sm font-medium text-sienna hover:text-espresso transition-colors"
+      >
+        WhatsApp Us
+      </a>
+      {isClosedToday && (
+        <p class="text-xs tracking-widest uppercase text-sienna mt-4">
+          Closed Today — See You Tomorrow
+        </p>
+      )}
+    </nav>
+  </div>
+</header>
+
+<!-- Spacer -->
+<div class="h-16 lg:h-20"></div>
+
+<script>
+  const navbar = document.getElementById('navbar');
+  const menuBtn = document.getElementById('mobile-menu-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
+  let menuOpen = false;
+
+  // Scroll effect
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 20) {
+      navbar?.classList.add('backdrop-blur-md', 'border-espresso/10', 'shadow-sm');
+      navbar?.classList.remove('border-transparent');
+    } else {
+      navbar?.classList.remove('backdrop-blur-md', 'border-espresso/10', 'shadow-sm');
+      navbar?.classList.add('border-transparent');
+    }
+  });
+
+  // Mobile toggle
+  menuBtn?.addEventListener('click', () => {
+    menuOpen = !menuOpen;
+    menuBtn.setAttribute('aria-expanded', String(menuOpen));
+    mobileMenu?.setAttribute('aria-hidden', String(!menuOpen));
+    if (menuOpen) {
+      mobileMenu?.classList.remove('translate-x-full');
+      document.body.style.overflow = 'hidden';
+    } else {
+      mobileMenu?.classList.add('translate-x-full');
+      document.body.style.overflow = '';
+    }
+  });
+
+  // Close on link click
+  mobileMenu?.querySelectorAll('a').forEach((link) => {
+    link.addEventListener('click', () => {
+      menuOpen = false;
+      menuBtn?.setAttribute('aria-expanded', 'false');
+      mobileMenu?.setAttribute('aria-hidden', 'true');
+      mobileMenu?.classList.add('translate-x-full');
+      document.body.style.overflow = '';
+    });
+  });
+</script>
