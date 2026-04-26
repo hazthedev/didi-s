@@ -4,6 +4,8 @@ import site from '../data/site.json';
 
 const today = new Date().toLocaleDateString('en-MY', { weekday: 'long' }).toLowerCase();
 const isClosedToday = site.hours[today as keyof typeof site.hours]?.closed ?? false;
+
+const placeholderIcon = `<div class="w-12 h-12 rounded-full border-2 border-dashed border-sienna/25 flex items-center justify-center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#A85D3A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c-4.5 0-8 3.5-8 8 0 5.25 8 10 8 10s8-4.75 8-10c0-4.5-3.5-8-8-8z"/><circle cx="12" cy="11" r="2.5"/></svg></div>`;
 ---
 
 <section class="relative bg-off-white overflow-hidden">
@@ -37,16 +39,9 @@ const isClosedToday = site.hours[today as keyof typeof site.hours]?.closed ?? fa
 
       <!-- Photo -->
       <div class="relative h-[50vh] lg:h-[70vh] animate-scale-settle">
-        <div class="relative w-full h-full">
-          <img
-            src="https://images.unsplash.com/photo-1555507036-ab1f4038024f?w=800&h=1000&fit=crop&q=85"
-            alt="A golden, flaky croissant on a marble surface, warm bakery lighting"
-            class="absolute inset-0 w-full h-full object-cover"
-            loading="eager"
-            decoding="async"
-            onerror="this.style.display='none'"
-          />
-          <div class="absolute inset-0 bg-cream flex flex-col items-center justify-center gap-3 z-[-1]">
+        <div class="relative w-full h-full bg-cream">
+          <!-- Placeholder (always visible behind) -->
+          <div class="absolute inset-0 flex flex-col items-center justify-center gap-3">
             <div class="w-12 h-12 rounded-full border-2 border-dashed border-sienna/25 flex items-center justify-center">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#A85D3A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M12 3c-4.5 0-8 3.5-8 8 0 5.25 8 10 8 10s8-4.75 8-10c0-4.5-3.5-8-8-8z"/>
@@ -55,6 +50,15 @@ const isClosedToday = site.hours[today as keyof typeof site.hours]?.closed ?? fa
             </div>
             <span class="font-accent text-sienna text-sm">fresh from the oven soon</span>
           </div>
+          <!-- Image (covers placeholder on success, hides on error) -->
+          <img
+            src="https://images.unsplash.com/photo-1555507036-ab1f4038024f?w=800&h=1000&fit=crop&q=85"
+            alt="A golden, flaky croissant on a marble surface, warm bakery lighting"
+            class="absolute inset-0 w-full h-full object-cover"
+            loading="eager"
+            decoding="async"
+            onerror="this.style.display='none'"
+          />
         </div>
         <div class="absolute bottom-6 right-6 lg:bottom-10 lg:right-10 transform -rotate-3">
           <span class="font-accent text-2xl md:text-3xl text-sienna bg-cream/90 px-4 py-2 shadow-sm">

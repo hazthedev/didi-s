@@ -39,16 +39,9 @@ import SectionHeading from '../components/SectionHeading.astro';
       </div>
 
       <!-- Photo -->
-      <div class="order-1 lg:order-2 h-[50vh] lg:h-[70vh] relative">
-        <img
-          src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=800&h=1000&fit=crop&q=85"
-          alt="Three ceramic cups of specialty coffee and matcha on a wooden table, warm natural light"
-          class="absolute inset-0 w-full h-full object-cover"
-          loading="lazy"
-          decoding="async"
-          onerror="this.style.display='none'"
-        />
-        <div class="absolute inset-0 bg-cream flex flex-col items-center justify-center gap-3 z-[-1]">
+      <div class="order-1 lg:order-2 h-[50vh] lg:h-[70vh] relative bg-cream">
+        {/* Placeholder (always visible behind) */}
+        <div class="absolute inset-0 flex flex-col items-center justify-center gap-3">
           <div class="w-12 h-12 rounded-full border-2 border-dashed border-sienna/25 flex items-center justify-center">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#A85D3A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
               <path d="M12 3c-4.5 0-8 3.5-8 8 0 5.25 8 10 8 10s8-4.75 8-10c0-4.5-3.5-8-8-8z"/>
@@ -57,6 +50,15 @@ import SectionHeading from '../components/SectionHeading.astro';
           </div>
           <span class="font-accent text-sienna text-sm">fresh from the oven soon</span>
         </div>
+        {/* Image (covers placeholder on success, hides on error) */}
+        <img
+          src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=800&h=1000&fit=crop&q=85"
+          alt="Three ceramic cups of specialty coffee and matcha on a wooden table, warm natural light"
+          class="absolute inset-0 w-full h-full object-cover"
+          loading="lazy"
+          decoding="async"
+          onerror="this.style.display='none'"
+        />
       </div>
     </div>
   </div>
