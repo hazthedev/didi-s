@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import ScrollReveal from '../components/ScrollReveal';
 import Hero from '../sections/Hero.astro';
 import PullQuoteSection from '../sections/PullQuoteSection.astro';
 import SignatureBakes from '../sections/SignatureBakes.astro';
@@ -14,10 +15,28 @@ import VisitTeaser from '../sections/VisitTeaser.astro';
   description="Family-run bakery in Wangsa Maju. European pastries with Malaysian flavors — rendang croizza, masak lemak ciabatta, ondeh-ondeh croissants. Specialty coffee & matcha. Halal. Closed Mondays."
 >
   <Hero />
-  <PullQuoteSection />
-  <SignatureBakes />
-  <CoffeeMatcha />
-  <TheFamily />
-  <Press />
-  <VisitTeaser />
+
+  <ScrollReveal client:visible>
+    <PullQuoteSection />
+  </ScrollReveal>
+
+  <ScrollReveal client:visible delay={100}>
+    <SignatureBakes />
+  </ScrollReveal>
+
+  <ScrollReveal client:visible delay={100}>
+    <CoffeeMatcha />
+  </ScrollReveal>
+
+  <ScrollReveal client:visible delay={100}>
+    <TheFamily />
+  </ScrollReveal>
+
+  <ScrollReveal client:visible delay={100}>
+    <Press />
+  </ScrollReveal>
+
+  <ScrollReveal client:visible delay={100}>
+    <VisitTeaser />
+  </ScrollReveal>
 </BaseLayout>
