@@ -1,12 +1,5 @@
 ---
 import '../styles/global.css';
-import '@fontsource/cormorant-garamond/400.css';
-import '@fontsource/cormorant-garamond/400-italic.css';
-import '@fontsource/cormorant-garamond/600.css';
-import '@fontsource/cormorant-garamond/700.css';
-import '@fontsource/inter/400.css';
-import '@fontsource/inter/500.css';
-import '@fontsource/caveat/400.css';
 
 import Navbar from '../components/Navbar.astro';
 import Footer from '../components/Footer.astro';
@@ -71,7 +64,9 @@ const schema = {
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="generator" content={Astro.generator} />
     <meta name="description" content={description} />
-    <meta name="theme-color" content="#F8F4ED" />
+    <meta name="theme-color" content="#fff4ee" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
     <title>{title}</title>
 
@@ -98,8 +93,19 @@ const schema = {
     <script type="application/ld+json" set:html={JSON.stringify(schema)} />
   </head>
   <body class="bg-off-white text-espresso antialiased">
+    <!-- Drifting sprinkle layer (purely decorative) -->
+    <div aria-hidden="true" class="pointer-events-none fixed inset-0 z-0 overflow-hidden">
+      <span class="sprinkle" style="left:8%;  top:-20px; background:#ff7a8a; animation-delay:-1s;  transform:rotate(20deg);"></span>
+      <span class="sprinkle" style="left:22%; top:-20px; background:#ffd66e; animation-delay:-3s;  transform:rotate(-15deg);"></span>
+      <span class="sprinkle" style="left:36%; top:-20px; background:#b9d28a; animation-delay:-6s;  transform:rotate(45deg);"></span>
+      <span class="sprinkle" style="left:50%; top:-20px; background:#cdd9ff; animation-delay:-9s;  transform:rotate(-30deg);"></span>
+      <span class="sprinkle" style="left:64%; top:-20px; background:#ff7a8a; animation-delay:-12s; transform:rotate(15deg);"></span>
+      <span class="sprinkle" style="left:78%; top:-20px; background:#ffd66e; animation-delay:-2s;  transform:rotate(-50deg);"></span>
+      <span class="sprinkle" style="left:90%; top:-20px; background:#b9d28a; animation-delay:-7s;  transform:rotate(25deg);"></span>
+    </div>
+
     <Navbar />
-    <main>
+    <main class="relative z-10">
       <slot />
     </main>
     <Footer />

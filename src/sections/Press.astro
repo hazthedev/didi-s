@@ -1,24 +1,30 @@
 ---
 import press from '../data/press.json';
+
+const cardBgs = ['#ffb3c8', '#c8e8d4', '#ffe79e'];
+const tilts = ['tilt-left', 'tilt-right', 'tilt-left'];
 ---
 
-<section class="bg-cream py-16 md:py-20 border-y border-espresso/5">
-  <div class="max-w-7xl mx-auto px-6 lg:px-8">
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-8">
-      {press.map((item) => (
-        <div class="space-y-3">
-          <h3 class="font-display text-lg font-semibold text-espresso">{item.name}</h3>
-          <p class="text-sm text-mocha leading-relaxed italic">
-            "{item.quote}"
+<section class="relative py-20 md:py-24 overflow-hidden">
+  <div class="relative max-w-7xl mx-auto px-6 lg:px-8">
+    <p class="eyebrow mb-10">Word on the street</p>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10">
+      {press.map((item, i) => (
+        <div class={`candy-card p-6 space-y-3 ${tilts[i % tilts.length]} hover:rotate-0 transition-transform duration-500`} style={`background:${cardBgs[i % cardBgs.length]};`}>
+          <!-- big quotation mark -->
+          <span class="font-display text-6xl leading-none text-[#cf3a4e] block -mb-4">"</span>
+          <p class="text-base text-[#4a2e22] leading-relaxed font-medium italic">
+            {item.quote}
           </p>
+          <h3 class="font-display text-xl text-[#4a2e22] pt-1">{item.name}</h3>
           <a
             href={item.url}
             target="_blank"
             rel="noopener"
-            class="text-xs text-sienna hover:text-espresso transition-colors inline-flex items-center gap-1"
+            class="text-xs font-bold text-[#4a2e22] hover:text-[#cf3a4e] transition-colors inline-flex items-center gap-1 underline underline-offset-4"
           >
             Read review
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
           </a>
         </div>
       ))}

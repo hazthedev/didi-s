@@ -19,18 +19,18 @@ const {
   class: className = '',
 } = Astro.props;
 
-const baseStyles = 'inline-flex items-center justify-center font-medium transition-all duration-300 ease-in-out rounded-none';
+const baseStyles = 'candy-pill inline-flex items-center justify-center font-bold tracking-wide';
 
 const variantStyles = {
-  filled: 'bg-sienna text-cream hover:bg-espresso border border-sienna hover:border-espresso',
-  outline: 'bg-transparent text-sienna border border-sienna hover:bg-sienna hover:text-cream',
-  text: 'bg-transparent text-sienna hover:text-espresso underline-offset-4 hover:underline',
+  filled: 'bg-[#ff7a8a] text-[#fff4ee] hover:bg-[#ffd66e] hover:text-[#4a2e22]',
+  outline: 'bg-[#fff4ee] text-[#4a2e22] hover:bg-[#c8e8d4]',
+  text: 'bg-transparent text-[#cf3a4e] border-transparent shadow-none hover:text-[#4a2e22] underline-offset-4 hover:underline',
 };
 
 const sizeStyles = {
-  sm: 'px-4 py-2 text-sm',
-  md: 'px-6 py-3 text-sm',
-  lg: 'px-8 py-4 text-base',
+  sm: 'px-5 py-2 text-sm',
+  md: 'px-7 py-3 text-sm',
+  lg: 'px-9 py-4 text-base',
 };
 
 const classes = `${baseStyles} ${variantStyles[variant]} ${sizeStyles[size]} ${className}`;

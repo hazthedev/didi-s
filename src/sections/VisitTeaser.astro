@@ -12,15 +12,17 @@ function formatHours(hours: typeof todayHours) {
 }
 ---
 
-<section class="bg-off-white py-20 md:py-28">
-  <div class="max-w-7xl mx-auto px-6 lg:px-8">
+<section class="relative py-20 md:py-28 overflow-hidden">
+  <div aria-hidden="true" class="cloud-blob" style="background:#ffe79e; width:300px; height:300px; bottom:-60px; right:10%;"></div>
+
+  <div class="relative max-w-7xl mx-auto px-6 lg:px-8">
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
       <!-- Map preview -->
-      <div class="h-[40vh] lg:h-[50vh] bg-mocha/10 relative overflow-hidden">
+      <div class="h-[45vh] lg:h-[55vh] candy-card overflow-hidden tilt-left hover:rotate-0 transition-transform duration-500 bg-[#fff4ee]">
         <iframe
           src={site.mapsEmbed}
           title="Didi's Cafe location map"
-          class="w-full h-full border-0 grayscale hover:grayscale-0 transition-all duration-500"
+          class="w-full h-full border-0"
           loading="lazy"
           allowfullscreen
           referrerpolicy="no-referrer-when-downgrade"
@@ -29,26 +31,28 @@ function formatHours(hours: typeof todayHours) {
 
       <!-- Info -->
       <div class="space-y-8">
-        <div class="space-y-2">
-          <p class="eyebrow text-sienna font-medium">Visit Us</p>
-          <h2 class="font-display text-3xl md:text-4xl font-semibold text-espresso">See you soon.</h2>
+        <div class="space-y-3">
+          <p class="eyebrow">Visit Us</p>
+          <h2 class="font-display text-4xl md:text-5xl text-[#4a2e22]">See you <span class="wavy">soon</span>.</h2>
         </div>
 
-        <div class="space-y-4">
-          <div class="flex items-center justify-between py-3 border-b border-espresso/10">
-            <span class="text-sm text-mocha">Today ({todayName})</span>
-            <span class={`text-sm font-medium ${isClosed ? 'text-sienna' : 'text-espresso'}`}>
+        <div class="candy-card bg-white p-6 space-y-3">
+          <div class="flex items-center justify-between pb-3 border-b-2 border-dashed border-[#4a2e22]/30">
+            <span class="text-sm font-bold text-[#4a2e22] capitalize">Today ({todayName})</span>
+            <span class={`text-sm font-bold px-3 py-1 rounded-full border-2 border-[#4a2e22] ${isClosed ? 'bg-[#ffb3c8]' : 'bg-[#c8e8d4]'} text-[#4a2e22]`}>
               {formatHours(todayHours)}
             </span>
           </div>
-          <p class="text-xs text-mocha/70">
+          <p class="text-xs text-[#6e4f3f] font-medium">
             Closed Mondays — that's when we rest, plan, and prep the week's bakes.
           </p>
         </div>
 
-        <address class="not-italic text-mocha text-sm leading-relaxed space-y-1">
-          <p>{site.address.street}</p>
-          <p>{site.address.area}, {site.address.postcode} {site.address.city}</p>
+        <address class="not-italic text-[#4a2e22] text-base leading-relaxed space-y-1 font-medium">
+          <p class="flex items-center gap-2">
+            <span aria-hidden="true">📍</span>{site.address.street}
+          </p>
+          <p class="pl-6">{site.address.area}, {site.address.postcode} {site.address.city}</p>
         </address>
 
         <div class="flex flex-wrap gap-4">

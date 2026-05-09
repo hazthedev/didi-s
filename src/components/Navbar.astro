@@ -14,21 +14,25 @@ const navLinks = [
 
 <header
   id="navbar"
-  class="fixed top-0 left-0 right-0 z-50 transition-all duration-200 bg-cream/90 border-b border-transparent"
+  class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-[#fff4ee]/85 backdrop-blur-md border-b-2 border-transparent"
 >
   <div class="max-w-7xl mx-auto px-6 lg:px-8">
     <div class="flex items-center justify-between h-16 lg:h-20">
-      <!-- Wordmark -->
-      <a href="/" class="font-display text-2xl lg:text-3xl font-semibold text-espresso tracking-tight">
+      <!-- Wordmark with cherry dot -->
+      <a href="/" class="group font-display text-3xl lg:text-4xl text-[#4a2e22] tracking-tight inline-flex items-baseline gap-1 hover-jelly">
         Didi's
+        <svg width="14" height="14" viewBox="0 0 14 14" class="ml-0.5" aria-hidden="true">
+          <circle cx="7" cy="9" r="4.5" fill="#ff7a8a" stroke="#4a2e22" stroke-width="1.5"/>
+          <path d="M7 5 C 8 2, 11 1, 12 3" fill="none" stroke="#4a2e22" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
       </a>
 
       <!-- Desktop nav -->
-      <nav class="hidden md:flex items-center gap-8">
+      <nav class="hidden md:flex items-center gap-7">
         {navLinks.map((link) => (
           <a
             href={link.href}
-            class="text-sm font-medium text-mocha hover:text-sienna transition-colors duration-200"
+            class="text-sm font-bold tracking-wide text-[#4a2e22] hover:text-[#cf3a4e] transition-all duration-300 hover:-translate-y-0.5"
           >
             {link.label}
           </a>
@@ -37,7 +41,7 @@ const navLinks = [
           href={`https://wa.me/${site.whatsapp}`}
           target="_blank"
           rel="noopener"
-          class="text-sm font-medium text-sienna hover:text-espresso transition-colors duration-200"
+          class="candy-pill bg-[#c8e8d4] text-[#4a2e22] hover:bg-[#ffd66e] text-sm font-bold px-5 py-2"
         >
           WhatsApp
         </a>
@@ -63,14 +67,14 @@ const navLinks = [
   <!-- Mobile drawer -->
   <div
     id="mobile-menu"
-    class="md:hidden fixed inset-0 top-16 bg-cream/98 backdrop-blur-sm transform translate-x-full transition-transform duration-300 ease-in-out"
+    class="md:hidden fixed inset-0 top-16 bg-[#fff4ee] backdrop-blur-sm transform translate-x-full transition-transform duration-300 ease-in-out"
     aria-hidden="true"
   >
     <nav class="flex flex-col items-center justify-center h-full gap-8">
       {navLinks.map((link) => (
         <a
           href={link.href}
-          class="font-display text-2xl text-espresso hover:text-sienna transition-colors"
+          class="font-display text-3xl text-[#4a2e22] hover:text-[#cf3a4e] transition-colors"
         >
           {link.label}
         </a>
@@ -79,12 +83,12 @@ const navLinks = [
         href={`https://wa.me/${site.whatsapp}`}
         target="_blank"
         rel="noopener"
-        class="text-sm font-medium text-sienna hover:text-espresso transition-colors"
+        class="candy-pill bg-[#c8e8d4] text-[#4a2e22] px-6 py-3 text-sm font-bold mt-2"
       >
         WhatsApp Us
       </a>
       {isClosedToday && (
-        <p class="text-xs tracking-widest uppercase text-sienna mt-4">
+        <p class="text-xs tracking-widest uppercase font-bold text-[#cf3a4e] mt-4">
           Closed Today — See You Tomorrow
         </p>
       )}
@@ -104,11 +108,13 @@ const navLinks = [
   // Scroll effect
   window.addEventListener('scroll', () => {
     if (window.scrollY > 20) {
-      navbar?.classList.add('backdrop-blur-md', 'border-espresso/10', 'shadow-sm');
+      navbar?.classList.add('shadow-md');
       navbar?.classList.remove('border-transparent');
+      navbar?.style.setProperty('border-bottom-color', '#4a2e22');
     } else {
-      navbar?.classList.remove('backdrop-blur-md', 'border-espresso/10', 'shadow-sm');
+      navbar?.classList.remove('shadow-md');
       navbar?.classList.add('border-transparent');
+      navbar?.style.setProperty('border-bottom-color', 'transparent');
     }
   });
 

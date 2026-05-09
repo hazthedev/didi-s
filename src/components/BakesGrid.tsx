@@ -53,7 +53,7 @@ function BentoTile({ item }: { item: BakeItem }) {
 
   return (
     <div
-      className={`group ${gridClasses[size]} bg-cream overflow-hidden transition-shadow duration-500 hover:shadow-xl`}
+      className={`group ${gridClasses[size]} candy-card overflow-hidden bg-white`}
     >
       {/* Image */}
       <div
@@ -83,7 +83,7 @@ function BentoTile({ item }: { item: BakeItem }) {
       >
         <div className="flex items-start justify-between gap-2">
           <h3
-            className={`font-display font-semibold text-espresso group-hover:text-sienna transition-colors duration-300 leading-tight ${
+            className={`font-display text-[#4a2e22] group-hover:text-[#cf3a4e] transition-colors duration-300 leading-tight ${
               isLarge ? 'text-xl lg:text-2xl' :
               isWide ? 'text-lg lg:text-xl' :
               isTall ? 'text-base lg:text-lg' :
@@ -93,10 +93,9 @@ function BentoTile({ item }: { item: BakeItem }) {
             {item.name}
           </h3>
           <span
-            className={`text-mocha font-medium tabular-nums whitespace-nowrap ${
-              isLarge ? 'text-sm lg:text-base' :
-              isWide ? 'text-sm' :
-              'text-xs lg:text-sm'
+            className={`font-bold text-[#4a2e22] tabular-nums whitespace-nowrap bg-[#ffd66e] border-2 border-[#4a2e22] rounded-full px-2.5 py-0.5 ${
+              isLarge ? 'text-sm' :
+              'text-xs'
             }`}
           >
             RM{item.price}
@@ -106,7 +105,7 @@ function BentoTile({ item }: { item: BakeItem }) {
         {/* Description — hidden on small, line-clamped on tall */}
         {!isSmall && (
           <p
-            className={`text-mocha leading-relaxed ${
+            className={`text-[#6e4f3f] font-medium leading-relaxed ${
               isLarge ? 'text-sm lg:text-base' :
               isWide ? 'text-sm' :
               'text-xs lg:text-sm line-clamp-2'
@@ -121,7 +120,7 @@ function BentoTile({ item }: { item: BakeItem }) {
           {item.tags.slice(0, isSmall ? 2 : undefined).map((tag) => (
             <span
               key={tag}
-              className="text-[10px] uppercase tracking-wider text-mocha/60 bg-espresso/5 px-2 py-0.5"
+              className="text-[10px] uppercase tracking-wider font-bold text-[#4a2e22] bg-[#fff4ee] border border-[#4a2e22]/30 rounded-full px-2 py-0.5"
             >
               {tag}
             </span>
@@ -158,10 +157,10 @@ export default function BakesGrid({ items, activeCategory }: BakesGridProps) {
           <button
             key={filter.id}
             onClick={() => toggleFilter(filter.id)}
-            className={`px-3 py-1.5 text-xs font-medium rounded-full border transition-all duration-200 ${
+            className={`candy-pill px-4 py-1.5 text-xs font-bold transition-all duration-300 ${
               activeFilters.includes(filter.id)
-                ? 'bg-sienna text-cream border-sienna'
-                : 'bg-transparent text-mocha border-espresso/20 hover:border-sienna hover:text-sienna'
+                ? 'bg-[#ff7a8a] text-[#fff4ee]'
+                : 'bg-white text-[#4a2e22] hover:bg-[#ffd66e]'
             }`}
           >
             {filter.label}
@@ -178,10 +177,10 @@ export default function BakesGrid({ items, activeCategory }: BakesGridProps) {
 
       {filteredItems.length === 0 && (
         <div className="text-center py-20">
-          <p className="text-mocha text-lg">No bakes match your filters.</p>
+          <p className="text-[#4a2e22] font-display text-2xl">No bakes match your filters.</p>
           <button
             onClick={() => setActiveFilters([])}
-            className="text-sienna text-sm mt-2 hover:underline"
+            className="candy-pill bg-[#ff7a8a] text-[#fff4ee] px-5 py-2 text-sm font-bold mt-4"
           >
             Clear all filters
           </button>

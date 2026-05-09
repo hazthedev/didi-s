@@ -1,96 +1,254 @@
+@import url('https://fonts.googleapis.com/css2?family=Caprasimo&family=Quicksand:wght@400;500;600;700&family=Caveat:wght@500;700&family=Fraunces:opsz,wght,SOFT,WONK@9..144,400..700,0..100,0..1&display=swap');
 @import "tailwindcss";
 
 @theme {
-  --color-off-white: #F8F4ED;
-  --color-cream: #FDFAF3;
-  --color-espresso: #3A2A1F;
-  --color-mocha: #6E5444;
-  --color-sienna: #A85D3A;
-  --color-pistachio: #9DAA7C;
-  --color-saffron: #D9A441;
-  --color-espresso-dark: #2B1F17;
+  /* Candy pastel palette — keep legacy names mapped to new pastels for compat */
+  --color-bubblegum: #ffb3c8;
+  --color-mint: #c8e8d4;
+  --color-butter: #ffe79e;
+  --color-rose-cream: #fff4ee;
+  --color-cocoa: #4a2e22;
+  --color-blueberry: #cdd9ff;
+  --color-cherry: #ff7a8a;
+  --color-pistachio: #b9d28a;
 
-  --font-display: 'Cormorant Garamond', ui-serif, Georgia, serif;
-  --font-body: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  /* Legacy aliases — used across components, remapped to candy palette */
+  --color-off-white: #fff7f0;
+  --color-cream: #fff4ee;
+  --color-espresso: #4a2e22;
+  --color-mocha: #8a6a58;
+  --color-sienna: #ff7a8a;
+  --color-saffron: #ffd66e;
+  --color-espresso-dark: #3a1f17;
+
+  --font-display: 'Caprasimo', 'Fraunces', ui-serif, Georgia, serif;
+  --font-body: 'Quicksand', 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif;
   --font-accent: 'Caveat', cursive;
 }
 
-/* Custom animations */
+/* ───── Sweet entrances + jelly motion ─────────────────────────────── */
 @keyframes fade-in-slow {
-  from { opacity: 0; transform: translateY(12px); }
+  from { opacity: 0; transform: translateY(14px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
 @keyframes gentle-rise {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
+  from { opacity: 0; transform: translateY(20px) scale(0.98); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
 }
 
 @keyframes scale-settle {
-  from { transform: scale(1.02); }
-  to { transform: scale(1); }
+  0%   { opacity: 0; transform: scale(0.85) rotate(-3deg); }
+  60%  { opacity: 1; transform: scale(1.04) rotate(1deg); }
+  100% { opacity: 1; transform: scale(1) rotate(0); }
+}
+
+@keyframes drift-up {
+  0%   { transform: translateY(0) rotate(0deg); }
+  50%  { transform: translateY(-12px) rotate(6deg); }
+  100% { transform: translateY(0) rotate(0deg); }
+}
+
+@keyframes wobble {
+  0%, 100% { transform: rotate(-2deg); }
+  50%      { transform: rotate(2deg); }
+}
+
+@keyframes sprinkle-fall {
+  0%   { transform: translateY(-10px) rotate(0deg); opacity: 0; }
+  10%  { opacity: 1; }
+  90%  { opacity: 1; }
+  100% { transform: translateY(110vh) rotate(720deg); opacity: 0; }
+}
+
+@keyframes jelly-pop {
+  0%   { transform: scale(1) rotate(0); }
+  30%  { transform: scale(1.08, 0.94) rotate(-2deg); }
+  60%  { transform: scale(0.96, 1.05) rotate(2deg); }
+  100% { transform: scale(1) rotate(0); }
+}
+
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
 }
 
 .animate-fade-in-slow {
-  animation: fade-in-slow 0.7s ease-out forwards;
+  animation: fade-in-slow 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
 }
-
 .animate-gentle-rise {
-  animation: gentle-rise 0.7s ease-out forwards;
+  animation: gentle-rise 0.85s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
 }
-
 .animate-scale-settle {
-  animation: scale-settle 1s ease-out forwards;
+  animation: scale-settle 1.1s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+.animate-drift {
+  animation: drift-up 6s ease-in-out infinite;
+}
+.animate-wobble {
+  animation: wobble 3.2s ease-in-out infinite;
+}
+.animate-spin-slow {
+  animation: spin-slow 18s linear infinite;
 }
 
-/* Reduced motion */
+.hover-jelly {
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.hover-jelly:hover {
+  animation: jelly-pop 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* ───── Reduced motion ────────────────────────────────────────────── */
 @media (prefers-reduced-motion: reduce) {
   .animate-fade-in-slow,
   .animate-gentle-rise,
-  .animate-scale-settle {
+  .animate-scale-settle,
+  .animate-drift,
+  .animate-wobble,
+  .animate-spin-slow,
+  .hover-jelly:hover {
     animation: none;
     opacity: 1;
     transform: none;
   }
 }
 
-/* Base styles */
+/* ───── Base ──────────────────────────────────────────────────────── */
 html {
   scroll-behavior: smooth;
 }
 
 body {
   font-family: var(--font-body);
-  color: var(--color-espresso);
-  background-color: var(--color-off-white);
+  font-weight: 500;
+  color: var(--color-cocoa);
+  background-color: var(--color-rose-cream);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  /* confetti sprinkle pattern + warm gradient */
+  background-image:
+    radial-gradient(at 12% 18%, rgba(255, 179, 200, 0.28) 0, transparent 42%),
+    radial-gradient(at 88% 8%,  rgba(200, 232, 212, 0.32) 0, transparent 45%),
+    radial-gradient(at 78% 92%, rgba(255, 231, 158, 0.30) 0, transparent 48%),
+    radial-gradient(at 5% 92%,  rgba(205, 217, 255, 0.25) 0, transparent 40%),
+    url("data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='280' height='280' viewBox='0 0 280 280'%3E%3Cg fill='none' stroke-width='3' stroke-linecap='round'%3E%3Cline x1='20' y1='30' x2='30' y2='38' stroke='%23ff7a8a' opacity='.55'/%3E%3Cline x1='110' y1='80' x2='118' y2='90' stroke='%2370bb95' opacity='.5'/%3E%3Cline x1='220' y1='40' x2='230' y2='52' stroke='%23ffc24a' opacity='.55'/%3E%3Cline x1='60' y1='160' x2='70' y2='170' stroke='%237b8fd6' opacity='.5'/%3E%3Cline x1='180' y1='180' x2='192' y2='188' stroke='%23ff7a8a' opacity='.5'/%3E%3Cline x1='250' y1='220' x2='260' y2='232' stroke='%2370bb95' opacity='.5'/%3E%3Cline x1='30' y1='240' x2='40' y2='252' stroke='%23ffc24a' opacity='.5'/%3E%3Cline x1='150' y1='250' x2='162' y2='258' stroke='%237b8fd6' opacity='.45'/%3E%3Ccircle cx='200' cy='110' r='3' fill='%23ff7a8a' stroke='none' opacity='.55'/%3E%3Ccircle cx='90' cy='220' r='3' fill='%23ffc24a' stroke='none' opacity='.55'/%3E%3Ccircle cx='260' cy='150' r='2.5' fill='%2370bb95' stroke='none' opacity='.55'/%3E%3C/g%3E%3C/svg%3E");
+  background-attachment: fixed;
 }
 
-/* Editorial uppercase eyebrow */
+/* Display headings get the bouncy serif */
+h1, h2, h3, .font-display {
+  font-family: var(--font-display);
+  letter-spacing: -0.01em;
+}
+
+/* Eyebrow — chip-style, rounded pill */
 .eyebrow {
-  font-size: 0.75rem;
-  letter-spacing: 0.2em;
+  display: inline-block;
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
+  background: var(--color-bubblegum);
+  color: var(--color-cocoa);
+  padding: 0.4rem 0.85rem;
+  border-radius: 999px;
+  border: 2px solid var(--color-cocoa);
+  box-shadow: 2px 2px 0 var(--color-cocoa);
 }
 
-/* Selection color */
 ::selection {
-  background-color: var(--color-sienna);
-  color: var(--color-cream);
+  background-color: var(--color-bubblegum);
+  color: var(--color-cocoa);
 }
 
-/* Minimal scrollbar */
 .scrollbar-hide {
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
-.scrollbar-hide::-webkit-scrollbar {
-  display: none;
+.scrollbar-hide::-webkit-scrollbar { display: none; }
+
+:focus-visible {
+  outline: 3px dashed var(--color-cherry);
+  outline-offset: 3px;
+  border-radius: 8px;
 }
 
-/* Custom focus states */
-:focus-visible {
-  outline: 2px solid var(--color-sienna);
-  outline-offset: 2px;
+/* ───── Sweet utilities ───────────────────────────────────────────── */
+.tilt-left  { transform: rotate(-2deg); }
+.tilt-right { transform: rotate(2deg); }
+.tilt-card  { transform: rotate(-1.5deg); transition: transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1); }
+.tilt-card:hover { transform: rotate(1.5deg) scale(1.02); }
+
+.candy-card {
+  background: #fff;
+  border: 2.5px solid var(--color-cocoa);
+  border-radius: 28px;
+  box-shadow: 6px 6px 0 var(--color-cocoa);
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.4s ease;
+}
+.candy-card:hover {
+  transform: translate(-2px, -2px) rotate(0.5deg);
+  box-shadow: 9px 9px 0 var(--color-cocoa);
+}
+
+.candy-pill {
+  border-radius: 999px;
+  border: 2.5px solid var(--color-cocoa);
+  box-shadow: 3px 3px 0 var(--color-cocoa);
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease;
+}
+.candy-pill:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 5px 5px 0 var(--color-cocoa);
+}
+.candy-pill:active {
+  transform: translate(1px, 1px);
+  box-shadow: 1px 1px 0 var(--color-cocoa);
+}
+
+/* Grainy butter texture overlay (use as ::before via .grain) */
+.grain {
+  position: relative;
+  isolation: isolate;
+}
+.grain::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.35;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml;utf8,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.29 0 0 0 0 0.18 0 0 0 0 0.13 0 0 0 0.5 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* Cloud blobs — soft amorphous shapes */
+.cloud-blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(40px);
+  pointer-events: none;
+  opacity: 0.55;
+}
+
+/* Sprinkle drift container */
+.sprinkle {
+  position: absolute;
+  width: 12px;
+  height: 4px;
+  border-radius: 999px;
+  pointer-events: none;
+  animation: sprinkle-fall 14s linear infinite;
+}
+
+/* Wavy underline accent */
+.wavy {
+  background-image: url("data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 80 12'%3E%3Cpath d='M0 6 Q 10 0 20 6 T 40 6 T 60 6 T 80 6' fill='none' stroke='%23ff7a8a' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: repeat-x;
+  background-position: 0 100%;
+  background-size: 80px 12px;
+  padding-bottom: 0.35em;
 }

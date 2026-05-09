@@ -1,17 +1,149 @@
 ---
 export interface Props {
   class?: string;
+  variant?: 'cupcake' | 'donut' | 'icecream' | 'lollipop' | 'cherry' | 'whip' | 'random';
+  caption?: string;
+  bg?: string;
 }
 
-const { class: className = '' } = Astro.props;
+const {
+  class: className = '',
+  variant = 'random',
+  caption = 'fresh from the oven',
+  bg,
+} = Astro.props;
+
+const variants = ['cupcake', 'donut', 'icecream', 'lollipop', 'cherry', 'whip'] as const;
+const chosen = variant === 'random'
+  ? variants[Math.floor(Math.random() * variants.length)]
+  : variant;
+
+const bgs = ['#ffb3c8', '#c8e8d4', '#ffe79e', '#cdd9ff', '#fff4ee'];
+const bgColor = bg ?? bgs[Math.floor(Math.random() * bgs.length)];
 ---
 
-<div class={`bg-cream flex flex-col items-center justify-center gap-3 ${className}`}>
-  <div class="w-12 h-12 rounded-full border-2 border-dashed border-sienna/25 flex items-center justify-center">
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#A85D3A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-      <path d="M12 3c-4.5 0-8 3.5-8 8 0 5.25 8 10 8 10s8-4.75 8-10c0-4.5-3.5-8-8-8z"/>
-      <circle cx="12" cy="11" r="2.5"/>
-    </svg>
+<div
+  class={`relative flex flex-col items-center justify-center gap-3 overflow-hidden ${className}`}
+  style={`background-color: ${bgColor};`}
+>
+  <!-- soft confetti dots backdrop -->
+  <svg class="absolute inset-0 w-full h-full opacity-50" viewBox="0 0 200 200" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+    <g stroke-linecap="round" stroke-width="3" fill="none">
+      <line x1="20"  y1="30"  x2="30"  y2="40"  stroke="#ff7a8a" />
+      <line x1="160" y1="50"  x2="172" y2="60"  stroke="#4a2e22" />
+      <line x1="40"  y1="160" x2="50"  y2="172" stroke="#ffd66e" />
+      <line x1="180" y1="170" x2="190" y2="180" stroke="#b9d28a" />
+    </g>
+    <circle cx="100" cy="40"  r="3" fill="#ff7a8a" />
+    <circle cx="60"  cy="100" r="3" fill="#ffd66e" />
+    <circle cx="150" cy="110" r="3" fill="#b9d28a" />
+    <circle cx="80"  cy="180" r="3" fill="#cdd9ff" />
+  </svg>
+
+  <div class="relative animate-drift" style="animation-duration: 5.5s;">
+    {chosen === 'cupcake' && (
+      <svg width="120" height="120" viewBox="0 0 120 120" fill="none" stroke="#4a2e22" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round" aria-hidden="true">
+        <!-- frosting swirl -->
+        <path d="M30 56 C 30 38, 50 28, 60 28 C 72 28, 90 38, 90 56 Z" fill="#ffb3c8"/>
+        <path d="M40 50 C 42 38, 55 32, 60 32 C 66 36, 64 46, 60 50" fill="none" stroke="#ff7a8a"/>
+        <!-- sprinkles on frosting -->
+        <line x1="48" y1="44" x2="52" y2="42" stroke="#ffd66e"/>
+        <line x1="65" y1="40" x2="69" y2="42" stroke="#b9d28a"/>
+        <line x1="74" y1="48" x2="78" y2="50" stroke="#cdd9ff"/>
+        <!-- cup -->
+        <path d="M28 56 L 92 56 L 86 96 C 86 100, 82 102, 78 102 L 42 102 C 38 102, 34 100, 34 96 Z" fill="#ffe79e"/>
+        <!-- cup lines -->
+        <line x1="42" y1="60" x2="38" y2="98"/>
+        <line x1="56" y1="60" x2="54" y2="98"/>
+        <line x1="70" y1="60" x2="72" y2="98"/>
+        <line x1="84" y1="60" x2="88" y2="98"/>
+        <!-- cherry -->
+        <circle cx="60" cy="22" r="6" fill="#ff7a8a"/>
+        <path d="M60 16 C 62 10, 68 8, 70 12" fill="none"/>
+      </svg>
+    )}
+    {chosen === 'donut' && (
+      <svg width="120" height="120" viewBox="0 0 120 120" fill="none" stroke="#4a2e22" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round" aria-hidden="true">
+        <!-- donut base -->
+        <circle cx="60" cy="60" r="40" fill="#ffe79e"/>
+        <!-- frosting (drip shape) -->
+        <path d="M22 56 C 24 42, 38 26, 60 26 C 82 26, 96 42, 98 56 C 96 62, 92 60, 88 58 C 86 64, 80 62, 76 60 C 72 66, 66 62, 60 64 C 54 60, 50 66, 46 60 C 42 64, 36 62, 34 56 C 30 60, 26 60, 22 56 Z" fill="#ffb3c8"/>
+        <!-- sprinkles -->
+        <line x1="38" y1="42" x2="42" y2="46" stroke="#b9d28a"/>
+        <line x1="58" y1="36" x2="60" y2="42" stroke="#cdd9ff"/>
+        <line x1="76" y1="44" x2="80" y2="48" stroke="#ff7a8a"/>
+        <line x1="48" y1="52" x2="50" y2="56" stroke="#ffd66e"/>
+        <line x1="68" y1="50" x2="72" y2="54" stroke="#b9d28a"/>
+        <!-- hole + bite -->
+        <circle cx="60" cy="60" r="12" fill="#fff4ee"/>
+        <path d="M88 80 C 96 78, 100 72, 96 66 L 84 74 Z" fill="#fff4ee" stroke="#4a2e22"/>
+      </svg>
+    )}
+    {chosen === 'icecream' && (
+      <svg width="110" height="120" viewBox="0 0 110 120" fill="none" stroke="#4a2e22" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round" aria-hidden="true">
+        <!-- scoops -->
+        <circle cx="55" cy="34" r="22" fill="#ffb3c8"/>
+        <circle cx="40" cy="50" r="18" fill="#c8e8d4"/>
+        <circle cx="70" cy="50" r="18" fill="#ffe79e"/>
+        <!-- drips -->
+        <circle cx="40" cy="68" r="3" fill="#c8e8d4"/>
+        <circle cx="70" cy="68" r="3" fill="#ffe79e"/>
+        <!-- cherry -->
+        <circle cx="55" cy="14" r="6" fill="#ff7a8a"/>
+        <path d="M55 8 C 57 4, 62 2, 64 6" fill="none"/>
+        <!-- cone -->
+        <path d="M28 60 L 82 60 L 55 110 Z" fill="#ffd66e"/>
+        <!-- waffle lines -->
+        <line x1="38" y1="68" x2="74" y2="68"/>
+        <line x1="42" y1="78" x2="68" y2="78"/>
+        <line x1="46" y1="88" x2="62" y2="88"/>
+        <line x1="44" y1="64" x2="62" y2="100"/>
+        <line x1="64" y1="64" x2="50" y2="100"/>
+      </svg>
+    )}
+    {chosen === 'lollipop' && (
+      <svg width="100" height="120" viewBox="0 0 100 120" fill="none" stroke="#4a2e22" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round" aria-hidden="true">
+        <circle cx="50" cy="42" r="32" fill="#ffb3c8"/>
+        <!-- swirl -->
+        <path d="M50 42 m -20 0 a 20 20 0 1 1 40 0 a 14 14 0 1 1 -28 0 a 8 8 0 1 1 16 0" fill="none" stroke="#ff7a8a"/>
+        <!-- stick -->
+        <line x1="50" y1="74" x2="50" y2="114" stroke-width="5"/>
+        <!-- ribbon -->
+        <path d="M40 80 C 30 78, 28 88, 36 90 C 28 92, 30 100, 40 96" fill="#cdd9ff"/>
+      </svg>
+    )}
+    {chosen === 'cherry' && (
+      <svg width="120" height="120" viewBox="0 0 120 120" fill="none" stroke="#4a2e22" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round" aria-hidden="true">
+        <circle cx="44" cy="80" r="20" fill="#ff7a8a"/>
+        <circle cx="78" cy="84" r="20" fill="#cf3a4e"/>
+        <!-- shine -->
+        <path d="M36 72 C 38 70, 42 68, 44 70" fill="none" stroke="#fff" stroke-width="3"/>
+        <path d="M70 76 C 72 74, 76 72, 78 74" fill="none" stroke="#fff" stroke-width="3"/>
+        <!-- stems -->
+        <path d="M44 60 C 50 30, 70 22, 90 18" fill="none"/>
+        <path d="M78 64 C 82 36, 90 24, 92 18" fill="none"/>
+        <!-- leaf -->
+        <path d="M88 18 C 96 14, 106 18, 104 28 C 96 30, 90 26, 88 18 Z" fill="#b9d28a"/>
+      </svg>
+    )}
+    {chosen === 'whip' && (
+      <svg width="120" height="120" viewBox="0 0 120 120" fill="none" stroke="#4a2e22" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round" aria-hidden="true">
+        <!-- cup -->
+        <path d="M30 60 L 90 60 L 84 102 C 84 106, 80 108, 76 108 L 44 108 C 40 108, 36 106, 36 102 Z" fill="#fff4ee"/>
+        <!-- whipped cream -->
+        <path d="M28 60 C 30 44, 44 38, 50 44 C 54 32, 70 32, 74 44 C 82 36, 96 46, 92 60 Z" fill="#fff" stroke="#4a2e22"/>
+        <path d="M40 50 C 42 44, 50 42, 54 48" fill="none"/>
+        <path d="M62 46 C 66 42, 74 44, 76 50" fill="none"/>
+        <!-- cherry on top -->
+        <circle cx="60" cy="32" r="6" fill="#ff7a8a"/>
+        <path d="M60 26 C 62 20, 68 18, 70 22" fill="none"/>
+        <!-- handle -->
+        <path d="M90 70 C 102 70, 102 92, 90 92" fill="none"/>
+      </svg>
+    )}
   </div>
-  <span class="font-accent text-sienna text-sm">fresh from the oven soon</span>
+
+  <span class="relative font-accent text-[#4a2e22] text-base font-bold tracking-wide">
+    {caption}
+  </span>
 </div>

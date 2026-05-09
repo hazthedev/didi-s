@@ -1,25 +1,29 @@
 ---
 import Button from '../components/Button.astro';
+import ImagePlaceholder from '../components/ImagePlaceholder.astro';
 import site from '../data/site.json';
 
 const today = new Date().toLocaleDateString('en-MY', { weekday: 'long' }).toLowerCase();
 const isClosedToday = site.hours[today as keyof typeof site.hours]?.closed ?? false;
-
-const placeholderIcon = `<div class="w-12 h-12 rounded-full border-2 border-dashed border-sienna/25 flex items-center justify-center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#A85D3A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c-4.5 0-8 3.5-8 8 0 5.25 8 10 8 10s8-4.75 8-10c0-4.5-3.5-8-8-8z"/><circle cx="12" cy="11" r="2.5"/></svg></div>`;
 ---
 
-<section class="relative bg-off-white overflow-hidden">
-  <div class="max-w-7xl mx-auto px-6 lg:px-8">
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center min-h-[calc(100vh-5rem)] lg:min-h-[calc(100vh-5rem)]">
+<section class="relative overflow-hidden">
+  <!-- soft cloud blobs -->
+  <div aria-hidden="true" class="cloud-blob" style="background:#ffb3c8; width:340px; height:340px; top:-80px; left:-80px;"></div>
+  <div aria-hidden="true" class="cloud-blob" style="background:#c8e8d4; width:280px; height:280px; bottom:-60px; right:-60px;"></div>
+  <div aria-hidden="true" class="cloud-blob" style="background:#ffe79e; width:220px; height:220px; top:30%; right:20%; opacity:0.4;"></div>
+
+  <div class="relative max-w-7xl mx-auto px-6 lg:px-8">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-14 items-center min-h-[calc(100vh-5rem)]">
       <!-- Text -->
       <div class="py-12 lg:py-20 space-y-8 animate-fade-in-slow">
-        <p class="eyebrow text-sienna font-medium">
+        <p class="eyebrow">
           Wangsa Maju · Bakery · Cafe
         </p>
-        <h1 class="font-display text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-semibold text-espresso leading-[1.1]">
-          Pastries with a passport.
+        <h1 class="font-display text-5xl md:text-6xl lg:text-7xl xl:text-[5.5rem] font-normal text-[#4a2e22] leading-[1.02]">
+          Pastries with a <span class="wavy">passport</span>.
         </h1>
-        <p class="text-mocha text-lg md:text-xl max-w-lg leading-relaxed">
+        <p class="text-[#6e4f3f] text-lg md:text-xl max-w-lg leading-relaxed font-medium">
           European bakes, Malaysian souls. Made fresh every morning by family — the way it should be.
         </p>
         <div class="flex flex-wrap gap-4 pt-2">
@@ -31,39 +35,39 @@ const placeholderIcon = `<div class="w-12 h-12 rounded-full border-2 border-dash
           </Button>
         </div>
         {isClosedToday && (
-          <p class="text-sm text-sienna font-medium">
+          <p class="text-sm text-[#cf3a4e] font-bold bg-white/70 inline-block px-4 py-2 rounded-full border-2 border-[#4a2e22]">
             Closed today (Monday) — we reopen Tuesday at 9am.
           </p>
         )}
       </div>
 
       <!-- Photo -->
-      <div class="relative h-[50vh] lg:h-[70vh] animate-scale-settle">
-        <div class="relative w-full h-full bg-cream">
-          <!-- Placeholder (always visible behind) -->
-          <div class="absolute inset-0 flex flex-col items-center justify-center gap-3">
-            <div class="w-12 h-12 rounded-full border-2 border-dashed border-sienna/25 flex items-center justify-center">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#A85D3A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M12 3c-4.5 0-8 3.5-8 8 0 5.25 8 10 8 10s8-4.75 8-10c0-4.5-3.5-8-8-8z"/>
-                <circle cx="12" cy="11" r="2.5"/>
-              </svg>
-            </div>
-            <span class="font-accent text-sienna text-sm">fresh from the oven soon</span>
-          </div>
-          <!-- Image (covers placeholder on success, hides on error) -->
-          <img
-            src="https://images.unsplash.com/photo-1555507036-ab1f4038024f?w=800&h=1000&fit=crop&q=85"
-            alt="A golden, flaky croissant on a marble surface, warm bakery lighting"
-            class="absolute inset-0 w-full h-full object-cover"
-            loading="eager"
-            decoding="async"
-            onerror="this.style.display='none'"
+      <div class="relative h-[55vh] lg:h-[70vh] animate-scale-settle">
+        <div class="relative w-full h-full candy-card overflow-hidden tilt-card">
+          <ImagePlaceholder
+            class="absolute inset-0 w-full h-full"
+            variant="cupcake"
+            caption="fresh today, baked with love"
+            bg="#fff4ee"
           />
         </div>
-        <div class="absolute bottom-6 right-6 lg:bottom-10 lg:right-10 transform -rotate-3">
-          <span class="font-accent text-2xl md:text-3xl text-sienna bg-cream/90 px-4 py-2 shadow-sm">
-            fresh today
-          </span>
+        <!-- Sticker badge -->
+        <div class="absolute -bottom-4 -right-2 lg:-bottom-6 lg:-right-4 z-10">
+          <div class="relative animate-wobble">
+            <div class="bg-[#ffd66e] candy-pill px-5 py-3 transform rotate-6">
+              <span class="font-accent text-2xl md:text-3xl text-[#4a2e22] font-bold">
+                fresh today!
+              </span>
+            </div>
+          </div>
+        </div>
+        <!-- Star sticker -->
+        <div class="absolute -top-4 -left-3 z-10 animate-spin-slow">
+          <svg width="72" height="72" viewBox="0 0 72 72" aria-hidden="true">
+            <path d="M36 4 L 42 24 L 64 24 L 46 38 L 52 60 L 36 47 L 20 60 L 26 38 L 8 24 L 30 24 Z"
+                  fill="#ff7a8a" stroke="#4a2e22" stroke-width="3" stroke-linejoin="round"/>
+            <text x="36" y="42" text-anchor="middle" font-family="Caprasimo,serif" font-size="11" fill="#fff4ee">YUM</text>
+          </svg>
         </div>
       </div>
     </div>

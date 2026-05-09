@@ -1,64 +1,66 @@
 ---
 import SectionHeading from '../components/SectionHeading.astro';
+import ImagePlaceholder from '../components/ImagePlaceholder.astro';
+
+const drinks = [
+  { name: 'Gula Apong Latte', desc: 'Sarawakian palm sugar, espresso, steamed milk. Smoky, caramel, unmistakably Malaysian.', dot: '#cf3a4e' },
+  { name: 'Butterscotch Latte', desc: 'House-made butterscotch, double ristretto, velvet foam. Like a hug in a ceramic cup.', dot: '#ffd66e' },
+  { name: 'Matcha Strawberry Latte', desc: 'Ceremonial-grade matcha layered with strawberry puree and creamy oat milk.', dot: '#b9d28a' },
+  { name: 'Coconut Matcha', desc: 'Shaded matcha whisked with coconut cream and a whisper of pandan.', dot: '#cdd9ff' },
+];
 ---
 
-<section class="bg-cream py-20 md:py-28">
-  <div class="max-w-7xl mx-auto px-6 lg:px-8">
+<section class="relative py-20 md:py-28 overflow-hidden">
+  <div aria-hidden="true" class="cloud-blob" style="background:#c8e8d4; width:380px; height:380px; bottom:-100px; left:-80px;"></div>
+
+  <div class="relative max-w-7xl mx-auto px-6 lg:px-8">
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
       <!-- Text -->
       <div class="space-y-8 order-2 lg:order-1">
         <SectionHeading
+          eyebrow="In the cup"
           title="And in the cup —"
           subtitle="Specialty coffee, ceremonial-grade matcha, and a couple of sweet liberties."
         />
 
-        <div class="space-y-6">
-          <div class="space-y-1">
-            <h3 class="font-display text-xl font-semibold text-espresso">Gula Apong Latte</h3>
-            <p class="text-sm text-mocha leading-relaxed">Sarawakian palm sugar, espresso, steamed milk. Smoky, caramel, unmistakably Malaysian.</p>
-          </div>
-          <div class="space-y-1">
-            <h3 class="font-display text-xl font-semibold text-espresso">Butterscotch Latte</h3>
-            <p class="text-sm text-mocha leading-relaxed">House-made butterscotch, double ristretto, velvet foam. Like a hug in a ceramic cup.</p>
-          </div>
-          <div class="space-y-1">
-            <h3 class="font-display text-xl font-semibold text-espresso">Matcha Strawberry Latte</h3>
-            <p class="text-sm text-mocha leading-relaxed">Ceremonial-grade matcha layered with strawberry puree and creamy oat milk.</p>
-          </div>
-          <div class="space-y-1">
-            <h3 class="font-display text-xl font-semibold text-espresso">Coconut Matcha</h3>
-            <p class="text-sm text-mocha leading-relaxed">Shaded matcha whisked with coconut cream and a whisper of pandan.</p>
-          </div>
-        </div>
+        <ul class="space-y-5">
+          {drinks.map((d) => (
+            <li class="flex items-start gap-4 candy-card bg-white p-5 hover-jelly">
+              <span
+                class="mt-1 flex-shrink-0 w-5 h-5 rounded-full border-2 border-[#4a2e22]"
+                style={`background:${d.dot};`}
+              ></span>
+              <div class="space-y-1">
+                <h3 class="font-display text-xl text-[#4a2e22]">{d.name}</h3>
+                <p class="text-sm text-[#6e4f3f] leading-relaxed font-medium">{d.desc}</p>
+              </div>
+            </li>
+          ))}
+        </ul>
 
-        <div class="inline-block bg-pistachio/15 border border-pistachio/30 px-5 py-3">
-          <p class="text-sm text-espresso">
-            <span class="font-medium">Wednesdays —</span> 10% off matcha for ladies' night
+        <div class="inline-block candy-pill bg-[#b9d28a] px-5 py-3">
+          <p class="text-sm text-[#4a2e22] font-bold">
+            <span class="font-accent text-base text-[#cf3a4e]">Wednesdays</span> — 10% off matcha for ladies' night
           </p>
         </div>
       </div>
 
       <!-- Photo -->
-      <div class="order-1 lg:order-2 h-[50vh] lg:h-[70vh] relative bg-cream">
-        {/* Placeholder (always visible behind) */}
-        <div class="absolute inset-0 flex flex-col items-center justify-center gap-3">
-          <div class="w-12 h-12 rounded-full border-2 border-dashed border-sienna/25 flex items-center justify-center">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#A85D3A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M12 3c-4.5 0-8 3.5-8 8 0 5.25 8 10 8 10s8-4.75 8-10c0-4.5-3.5-8-8-8z"/>
-              <circle cx="12" cy="11" r="2.5"/>
-            </svg>
-          </div>
-          <span class="font-accent text-sienna text-sm">fresh from the oven soon</span>
+      <div class="order-1 lg:order-2 h-[55vh] lg:h-[70vh] relative">
+        <div class="candy-card overflow-hidden h-full tilt-card">
+          <ImagePlaceholder
+            class="w-full h-full"
+            variant="whip"
+            caption="three sips, one ceramic"
+            bg="#fff4ee"
+          />
         </div>
-        {/* Image (covers placeholder on success, hides on error) */}
-        <img
-          src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=800&h=1000&fit=crop&q=85"
-          alt="Three ceramic cups of specialty coffee and matcha on a wooden table, warm natural light"
-          class="absolute inset-0 w-full h-full object-cover"
-          loading="lazy"
-          decoding="async"
-          onerror="this.style.display='none'"
-        />
+        <!-- Sticker -->
+        <div class="absolute -top-5 -right-5 z-10 animate-wobble">
+          <div class="bg-[#ffb3c8] candy-pill px-5 py-2 rotate-12">
+            <span class="font-accent text-2xl text-[#4a2e22] font-bold">sip slow</span>
+          </div>
+        </div>
       </div>
     </div>
   </div>

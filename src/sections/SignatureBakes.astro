@@ -1,57 +1,53 @@
 ---
 import SectionHeading from '../components/SectionHeading.astro';
+import ImagePlaceholder from '../components/ImagePlaceholder.astro';
 import bakes from '../data/bakes.json';
 
 const featured = bakes.items.filter((item) => item.featured).slice(0, 4);
+const variants = ['cupcake', 'donut', 'icecream', 'lollipop', 'cherry', 'whip'] as const;
+const tilts = ['tilt-left', 'tilt-right', 'tilt-left', 'tilt-right'];
+const bgs = ['#ffb3c8', '#c8e8d4', '#ffe79e', '#cdd9ff'];
 ---
 
-<section class="bg-off-white py-20 md:py-28">
-  <div class="max-w-7xl mx-auto px-6 lg:px-8">
+<section class="relative py-20 md:py-28 overflow-hidden">
+  <!-- decorative blob -->
+  <div aria-hidden="true" class="cloud-blob" style="background:#ffe79e; width:300px; height:300px; top:-40px; right:10%;"></div>
+
+  <div class="relative max-w-7xl mx-auto px-6 lg:px-8">
     <SectionHeading
       eyebrow="What we're known for"
       title="A short list. We'd rather do a few things, properly."
-      class="mb-12 md:mb-16"
+      class="mb-14 md:mb-20"
     />
 
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
-      {featured.map((item) => (
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-10">
+      {featured.map((item, i) => (
         <a
           href="/bakes"
-          class="group block bg-cream overflow-hidden transition-shadow duration-500 hover:shadow-lg"
+          class={`group block ${tilts[i % tilts.length]} hover:rotate-0 transition-transform duration-500`}
         >
-          <div class="aspect-[4/5] relative bg-cream">
-            {/* Placeholder (always visible behind) */}
-            <div class="absolute inset-0 flex flex-col items-center justify-center gap-2">
-              <div class="w-10 h-10 rounded-full border-2 border-dashed border-sienna/25 flex items-center justify-center">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#A85D3A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M12 3c-4.5 0-8 3.5-8 8 0 5.25 8 10 8 10s8-4.75 8-10c0-4.5-3.5-8-8-8z"/>
-                  <circle cx="12" cy="11" r="2.5"/>
-                </svg>
+          <div class="candy-card overflow-hidden">
+            <div class="aspect-[4/5] relative">
+              <ImagePlaceholder
+                class="absolute inset-0 w-full h-full"
+                variant={variants[i % variants.length]}
+                caption={item.name.toLowerCase()}
+                bg={bgs[i % bgs.length]}
+              />
+            </div>
+            <div class="p-5 space-y-2 bg-white">
+              <div class="flex items-start justify-between gap-2">
+                <h3 class="font-display text-2xl text-[#4a2e22] group-hover:text-[#cf3a4e] transition-colors duration-300">
+                  {item.name}
+                </h3>
+                <span class="text-sm font-bold text-[#4a2e22] tabular-nums whitespace-nowrap bg-[#ffd66e] px-2.5 py-1 rounded-full border-2 border-[#4a2e22]">
+                  RM{item.price}
+                </span>
               </div>
-              <span class="font-accent text-sienna text-xs">fresh from the oven soon</span>
+              <p class="text-sm text-[#6e4f3f] leading-relaxed line-clamp-2 font-medium">
+                {item.description}
+              </p>
             </div>
-            {/* Image (covers placeholder on success, hides on error) */}
-            <img
-              src={item.image.replace('/images/bakes/', 'https://images.unsplash.com/photo-') + '?w=600&h=750&fit=crop&q=80'}
-              alt={item.name}
-              class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-in-out group-hover:scale-[1.04]"
-              loading="lazy"
-              decoding="async"
-              onerror="this.style.display='none'"
-            />
-          </div>
-          <div class="p-5 space-y-2">
-            <div class="flex items-start justify-between gap-2">
-              <h3 class="font-display text-xl font-semibold text-espresso group-hover:text-sienna transition-colors duration-300">
-                {item.name}
-              </h3>
-              <span class="text-sm text-mocha font-medium tabular-nums whitespace-nowrap">
-                RM{item.price}
-              </span>
-            </div>
-            <p class="text-sm text-mocha leading-relaxed line-clamp-2">
-              {item.description}
-            </p>
           </div>
         </a>
       ))}
